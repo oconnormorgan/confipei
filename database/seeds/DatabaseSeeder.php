@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             FruitsSeeder::class,
             ProducteursSeeder::class,
+            RecompensesSeeder::class,
+            CommandesSeeder::class,
+            ConfituresSeeder::class,
             ]);
     }
 }
