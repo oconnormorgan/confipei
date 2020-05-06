@@ -1929,6 +1929,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      dialog: false,
       headers: [{
         text: 'Confitures',
         align: 'start',
@@ -1956,14 +1957,15 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref.data;
         return data.data.forEach(function (data) {
           _this.datas.push(data);
-
-          console.log(data);
         });
       })["catch"]();
     },
-    displayFruits: function displayFruits() {
-      // console.log(data);
-      return "toto";
+    displayFruits: function displayFruits(items) {
+      var fruits = [];
+      items.forEach(function (item) {
+        fruits.push(item.nom);
+      });
+      return fruits.join(', ');
     }
   }
 });
@@ -38337,7 +38339,7 @@ var render = function() {
                 key: "item.fruits",
                 fn: function(ref) {
                   var item = ref.item
-                  return [_vm._v(_vm._s(_vm.displayFruits(item.fruits)))]
+                  return [_vm._v(_vm._s(_vm.displayFruits(item.fruit)))]
                 }
               }
             ])

@@ -6,7 +6,7 @@
                 <v-data-table :headers="headers" :items="datas" sort-by="data" class="elevation-1">
                     <template v-slot:item.intitule="{ item }">{{ item.intitule }}</template>
                     <template v-slot:item.producteur="{ item }">{{ item.producteur.nom }}</template>
-                    <template v-slot:item.fruits="{ item }">{{displayFruits(item.fruits) }}</template>
+                    <template v-slot:item.fruits="{ item }">{{displayFruits(item.fruit) }}</template>
                 </v-data-table>
             </div>
         </div>
@@ -18,6 +18,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            dialog: false,
             headers: [{
                 text: 'Confitures',
                 align: 'start',
@@ -46,14 +47,16 @@ export default {
                 .then(( { data }) =>
                     data.data.forEach(data => {
                         this.datas.push(data);
-                        console.log(data);
                     })
                 )
                 .catch();
         },
-        displayFruits() {
-            // console.log(data);
-            return "toto";
+        displayFruits(items) {
+            let fruits = [];
+            items.forEach(item => {
+                fruits.push((item.nom))
+            })
+            return fruits.join(', ');
         }
     },
 
