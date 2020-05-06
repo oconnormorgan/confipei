@@ -9,9 +9,15 @@ class CommandesModel extends Model
 {
     protected $table = 'commande_table';
     protected $fillable = [
-        'id'
+        'id',
     ];
     public $timestamps = false;
 
-    use SoftDeletes;
+    public function confitures(){
+        return $this->belongsToMany(ConfituresModel::class, 'commande_has_confiture', 'id_commande', 'id_confiture');
+    }
+
+    public function users(){
+        return $this->belongsToMany(UsersModel::class, 'commande_has_confiture', 'id_commande', 'id_user');
+    }
 }

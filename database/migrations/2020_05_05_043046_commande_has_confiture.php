@@ -18,7 +18,7 @@ class CommandeHasConfiture extends Migration
             $table->foreign('id_commande')->references('id')->on('commande_table');
             $table->biginteger('id_confiture')->unsigned();
             $table->foreign('id_confiture')->references('id')->on('confiture_table');
-            $table->integer('quantite');
+            $table->integer('quantite')->nullable();
         });
     }
 

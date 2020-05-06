@@ -14,6 +14,13 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('role_users_table')->insert([
+            'intitule' => 'clients',
+        ]);
+        DB::table('role_users_table')->insert([
+            'intitule' => 'admin',
+        ]);
+
         DB::table('users_table')->insert([
             'nom' => 'admin',
             'prenom' => Str::random(10),
@@ -21,6 +28,12 @@ class UsersSeeder extends Seeder
             'password' => Hash::make('password'),
             'id_role' => 2,
         ]);
-        factory(App\UsersModel::class, 50)->create();
+
+        factory(App\UsersModel::class, 5)
+        ->create()
+        ->each(function($u) {
+            $u->commandes()->saveMany(factory(App\CommandesModel::class, 2)
+                ->make());
+            });
     }
 }

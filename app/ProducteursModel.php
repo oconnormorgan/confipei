@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProducteursModel extends Model
 {
@@ -13,5 +12,7 @@ class ProducteursModel extends Model
     ];
     public $timestamps = false;
 
-    use SoftDeletes;
+    public function producteur(){
+        return $this->hasMany(ConfituresModel::class, 'id_producteur');
+    }
 }

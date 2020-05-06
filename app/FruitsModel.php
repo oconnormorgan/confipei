@@ -13,5 +13,7 @@ class FruitsModel extends Model
     ];
     public $timestamps = false;
 
-    use SoftDeletes;
+    public function confiture(){
+        return $this->belongsToMany(ConfituresModel::class, 'confiture_has_fruit', 'id_fruit', 'id_confiture');
+    }
 }

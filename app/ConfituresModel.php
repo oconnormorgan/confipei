@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ConfituresModel extends Model
 {
@@ -13,5 +12,19 @@ class ConfituresModel extends Model
     ];
     public $timestamps = false;
 
-    use SoftDeletes;
+    public function producteur(){
+        return $this->belongsTo(ProducteursModel::class, 'id_producteur'); 
+    }
+
+    public function recompenses(){
+        return $this->belongsToMany(RecompensesModel::class, 'confiture_has_recompense', 'id_confiture', 'id_recompense');
+    }
+
+    public function fruits(){
+        return $this->belongsToMany(FruitsModel::class, 'confiture_has_fruit', 'id_confiture', 'id_fruit');
+    }
+
+    public function commandes(){
+        return $this->belongsToMany(CommandesModel::class, 'commande_has_confiture', 'id_confiture', 'id_commande');
+    }
 }

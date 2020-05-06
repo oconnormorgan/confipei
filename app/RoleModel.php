@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoleModel extends Model
 {
-    protected $table = 'role_table';
+    protected $table = 'role_users_table';
     protected $fillable = [
         'intitule',
     ];
     public $timestamps = false;
 
-    use SoftDeletes;
+    public function role(){
+        return $this->hasMany(UsersModel::class, 'id_role');
+    }
 }
