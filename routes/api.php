@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/liste', 'ConfitureController@index');
+Route::post('/create', 'ConfitureController@store');
 Route::get('/users', 'UserController@index');

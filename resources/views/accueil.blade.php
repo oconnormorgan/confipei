@@ -15,7 +15,7 @@
             <layout></layout>
         </div>
     </div>
-
+    <script src="https://kit.fontawesome.com/3227ebb15b.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 

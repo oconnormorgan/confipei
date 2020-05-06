@@ -9,6 +9,7 @@ use App\Http\Resources\FruitsResource;
 use App\Http\Resources\UserResource;
 use App\UsersModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ConfitureController extends Controller
 {
@@ -41,7 +42,23 @@ class ConfitureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validation des données entrées
+        $dataConfiture = Validator::make(
+            $request->input(),
+            [
+                'intitule' => 'required',
+                'prix' => 'required',
+                'id_producteur' => 'required',
+
+            ],
+            [
+                'required' => 'Le champs :attribute est requis', // :attribute renvoie le champs / l'id de l'element en erreur
+            ]
+        )->validate();
+        //Ajout en bdd des données validées par le validator
+        $confiture = ConfituresModel::create($dataConfiture);
+        //Retourne le circuit formaté grace à la ressource
+        return new ConfituresResource($confiture);
     }
 
     /**
