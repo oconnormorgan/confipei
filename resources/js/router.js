@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from './components/Home.vue';
-
 import Dashboard from './components/Dashboard.vue'
 
 
@@ -26,10 +25,4 @@ const router = new VueRouter({
     ]
 })
 
-const app = new Vue({
-    el: '#app',
-    vuetify: new Vuetify({}),
-    router: Routes,
-    components: { Home }
-})
-export default new Vuetify(app);
+export default router;

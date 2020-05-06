@@ -14,6 +14,3 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'AccueilController@index');
-
-Route::get('/liste', 'ConfitureController@index');
-Route::get('/users', 'UserController@index');

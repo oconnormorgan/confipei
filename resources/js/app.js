@@ -10,41 +10,16 @@ require('./bootstrap');
 // and then call `Vue.use(VueRouter)`.
 
 window.Vue = require('vue');
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
-import Routes from './router.js';
+import Route from './router.js';
+import layout from './layout/layout';
+import vuetify from './src/plugins/vuetify.js' // path to vuetify export
 
-
-// 1. Define route components.
-// These can be imported from other files
-const Home = { template: '<div>Home</div>' }
-const Dashboard = { template: '<div>Dashboard</div>' }
-
-// 2. Define some routes
-// Each route should map to a component. The "component" can
-// either be an actual component constructor created via
-// `Vue.extend()`, or just a component options object.
-// We'll talk about nested routes later.
-
-const routes = [
-  { path: '/Home', component: Home },
-  { path: '/Dashboard', component: Dashboard }
-]
-
-// 3. Create the router instance and pass the `routes` option
-// You can pass in additional options here, but let's
-// keep it simple for now.
-
-const router = new VueRouter({
-    routes: routes,
-})
-
-// 4. Create and mount the root instance.
-// Make sure to inject the router with the router option to make the
-// whole app router-aware.
+Vue.component('layout', require('./layout/layout'));
 
 const app = new Vue({
-  router : router
+  router : Route,
+  vuetify,
+  components: { layout }
 }).$mount('#app')
 
 // Now the app has started!

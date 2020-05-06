@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ConfituresModel;
+use App\FruitsModel;
 use App\Http\Resources\ConfituresResource;
+use App\Http\Resources\FruitsResource;
 use App\Http\Resources\UserResource;
 use App\UsersModel;
 use Illuminate\Http\Request;
