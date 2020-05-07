@@ -20,4 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/liste', 'ConfitureController@index');
 Route::post('/create', 'ConfitureController@store');
+Route::get('/producteurs', 'ConfitureController@getProducteurs');
+Route::get('/fruits', 'ConfitureController@getFruits');
+Route::get('/fruitsliste', 'ConfitureController@getFruitsListe');
 Route::get('/users', 'UserController@index');

@@ -6,7 +6,9 @@ use App\ConfituresModel;
 use App\FruitsModel;
 use App\Http\Resources\ConfituresResource;
 use App\Http\Resources\FruitsResource;
+use App\Http\Resources\ProducteursResource;
 use App\Http\Resources\UserResource;
+use App\ProducteursModel;
 use App\UsersModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -49,12 +51,12 @@ class ConfitureController extends Controller
                 'intitule' => 'required',
                 'prix' => 'required',
                 'id_producteur' => 'required',
-
             ],
             [
                 'required' => 'Le champs :attribute est requis', // :attribute renvoie le champs / l'id de l'element en erreur
             ]
         )->validate();
+        
         //Ajout en bdd des données validées par le validator
         $confiture = ConfituresModel::create($dataConfiture);
         //Retourne le circuit formaté grace à la ressource
@@ -104,5 +106,23 @@ class ConfitureController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getProducteurs() {
+        $producteurs = ProducteursModel::all();
+        return ProducteursResource::collection($producteurs);
+    }
+    public function getFruits() {
+
+        $fruits = FruitsModel::all();
+        return FruitsResource::collection($fruits);
+    }
+    public function getFruitsListe(Request $request) {
+
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $fruits = FruitsModel::where('nom ', 'LIKE ', '%' . $query . '%')->get();
+            return response()->json($fruits);
+        }
     }
 }
