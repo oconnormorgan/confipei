@@ -118,11 +118,11 @@ class ConfitureController extends Controller
         return FruitsResource::collection($fruits);
     }
     public function getFruitsListe(Request $request) {
-
-        if ($request->get('query')) {
-            $query = $request->get('query');
-            $fruits = FruitsModel::where('nom ', 'LIKE ', '%' . $query . '%')->get();
-            return response()->json($fruits);
-        }
+        return $request;
+        // if ($request->get('query')) {
+        //     $query = $request->get('query');
+        //     $fruits = FruitsModel::where('nom', 'LIKE', '%' . $query . '%')->get();
+        //     return response()->json($fruits);
+        // }
     }
 }

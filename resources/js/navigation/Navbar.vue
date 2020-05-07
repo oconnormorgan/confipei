@@ -6,6 +6,7 @@
         <div class="d-flex flex-row">
           <v-btn class="padding d-flex" text to="/">Home</v-btn> <!-- 'to' utilise les component de view -->
           <v-btn class="padding d-flex" text to="/dashboard">Dashboard</v-btn>
+          <v-btn class="padding d-flex" text to="/login">Login</v-btn>
         </div>
       </v-card>
     </v-col>

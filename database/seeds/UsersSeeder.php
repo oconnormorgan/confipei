@@ -25,7 +25,7 @@ class UsersSeeder extends Seeder
             'nom' => 'admin',
             'prenom' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'password' => bcrypt('123456789'),
             'id_role' => 2,
         ]);
 
