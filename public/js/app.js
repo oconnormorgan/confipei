@@ -1933,7 +1933,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Navbar: _navigation_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"],
-    DashboardFooter: _navigation_Footer__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Footer: _navigation_Footer__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -1944,60 +1944,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/js/components/Dashboard.js?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _dashboard_addConfiture_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dashboard/addConfiture.vue */ "./resources/js/components/dashboard/addConfiture.vue");
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    addConfiture: _dashboard_addConfiture_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  data: function data() {
-    return {
-      headers: [{
-        text: 'Confitures',
-        align: 'start',
-        sortable: false,
-        value: 'intitule'
-      }, {
-        text: 'Producteurs',
-        value: 'producteur'
-      }, {
-        text: 'Fruits',
-        value: 'fruits'
-      }],
-      datas: [],
-      confitures: []
-    };
-  },
-  created: function created() {
-    this.initialize();
-  },
-  methods: {
-    initialize: function initialize() {
-      var _this = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/liste').then(function (_ref) {
-        var data = _ref.data;
-        return data.data.forEach(function (data) {
-          _this.datas.push(data);
-        });
-      })["catch"]();
-    },
-    displayFruits: function displayFruits(items) {
-      var fruits = [];
-      items.forEach(function (item) {
-        fruits.push(item.nom);
-      });
-      return fruits.join(', ');
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/morgan/Bureau/projet/ConfiPei/resources/js/components/Dashboard.js: Support for the experimental syntax 'decorators-legacy' isn't currently enabled (91:9):\n\n\u001b[0m \u001b[90m 89 | \u001b[39m        }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 90 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 91 | \u001b[39m        \u001b[33m@\u001b[39mclick\u001b[33m.\u001b[39mstop\u001b[33m=\u001b[39m\u001b[32m\"show=false\"\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 92 | \u001b[39m    }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 93 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 94 | \u001b[39m}\u001b[0m\n    at Parser._raise (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:742:17)\n    at Parser.raiseWithData (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:735:17)\n    at Parser.expectOnePlugin (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:8794:18)\n    at Parser.parseDecorator (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11286:10)\n    at Parser.parseObjectMember (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10433:30)\n    at Parser.parseObj (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10396:25)\n    at Parser.parseExprAtom (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10017:28)\n    at Parser.parseExprSubscripts (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9624:23)\n    at Parser.parseMaybeUnary (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9604:21)\n    at Parser.parseExprOps (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9474:23)\n    at Parser.parseMaybeConditional (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9447:23)\n    at Parser.parseMaybeAssign (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9402:21)\n    at Parser.parseObjectProperty (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10534:101)\n    at Parser.parseObjPropValue (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10559:101)\n    at Parser.parseObjectMember (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10483:10)\n    at Parser.parseObj (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10396:25)\n    at Parser.parseExprAtom (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10017:28)\n    at Parser.parseExprSubscripts (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9624:23)\n    at Parser.parseMaybeUnary (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9604:21)\n    at Parser.parseExprOps (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9474:23)\n    at Parser.parseMaybeConditional (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9447:23)\n    at Parser.parseMaybeAssign (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9402:21)\n    at Parser.parseExportDefaultExpression (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12306:24)\n    at Parser.parseExport (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12208:31)\n    at Parser.parseStatementContent (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11208:27)\n    at Parser.parseStatement (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11104:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11679:25)\n    at Parser.parseBlockBody (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11665:10)\n    at Parser.parseTopLevel (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11035:10)\n    at Parser.parse (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12671:10)\n    at parse (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12722:38)\n    at parser (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/core/lib/transformation/normalize-file.js:93:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/core/lib/transformation/index.js:31:50)");
 
 /***/ }),
 
@@ -2020,94 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     goBack: function goBack() {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      intitule: '',
-      prix: '',
-      producteur: '',
-      fruit: '',
-      dialog: false,
-      producteurs: [],
-      fruits: [],
-      search: null
-    };
-  },
-  created: function created() {
-    this.getProducteurs();
-    this.getFruits();
-  },
-  watch: {
-    search: function search(val) {
-      if (val && val.length > 2) {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/fruitsliste', {
-          params: {
-            query: val
-          }
-        }).then(function (_ref) {
-          var data = _ref.data;
-          return console.log(data.data);
-        });
-      }
-    }
-  },
-  computed: {
-    formTitle: function formTitle() {
-      return 'Ajouter une confiture';
-    }
-  },
-  methods: {
-    save: function save(e) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/create', {
-        intitule: this.intitule,
-        prix: this.prix,
-        id_producteur: this.producteur
-      }).then(function (_ref2) {
-        var data = _ref2.data;
-        console.log(data.data);
-      });
-      this.close();
-    },
-    close: function close() {
-      this.dialog = false;
-    },
-    getProducteurs: function getProducteurs() {
-      var _this = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/producteurs").then(function (_ref3) {
-        var data = _ref3.data;
-        return data.data.forEach(function (data) {
-          _this.producteurs.push(data);
-        });
-      });
-    },
-    getFruits: function getFruits() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/fruits").then(function (_ref4) {
-        var data = _ref4.data;
-        return data.data.forEach(function (data) {
-          _this2.fruits.push(data);
-        });
-      });
     }
   }
 });
@@ -44607,7 +44468,60 @@ var render = function() {
                         _vm._v(" "),
                         _c("v-spacer"),
                         _vm._v(" "),
-                        _c("addConfiture")
+                        _c(
+                          "v-dialog",
+                          {
+                            attrs: { "max-width": "500px" },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  return [
+                                    _c(
+                                      "v-btn",
+                                      _vm._g(
+                                        {
+                                          staticClass: "mb-2",
+                                          attrs: { color: "primary", dark: "" },
+                                          on: {
+                                            click: [
+                                              function($event) {
+                                                return _vm.createItem(
+                                                  (_vm.createItem = true)
+                                                )
+                                              },
+                                              function($event) {
+                                                $event.stopPropagation()
+                                                _vm.modal = true
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        on
+                                      ),
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "fas fa-plus-circle fa-2x"
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                }
+                              }
+                            ]),
+                            model: {
+                              value: _vm.dialog,
+                              callback: function($$v) {
+                                _vm.dialog = $$v
+                              },
+                              expression: "dialog"
+                            }
+                          },
+                          [_vm._v(" "), _c("addConfiture")],
+                          1
+                        )
                       ],
                       1
                     )
@@ -44623,6 +44537,13 @@ var render = function() {
                 }
               },
               {
+                key: "item.prix",
+                fn: function(ref) {
+                  var item = ref.item
+                  return [_vm._v(_vm._s(item.prix))]
+                }
+              },
+              {
                 key: "item.producteur",
                 fn: function(ref) {
                   var item = ref.item
@@ -44633,7 +44554,76 @@ var render = function() {
                 key: "item.fruits",
                 fn: function(ref) {
                   var item = ref.item
-                  return [_vm._v(_vm._s(_vm.displayFruits(item.fruit)))]
+                  return [_vm._v(_vm._s(_vm.displayFruits(item.fruits)))]
+                }
+              },
+              {
+                key: "item.actions",
+                fn: function(ref) {
+                  var item = ref.item
+                  return [
+                    _c(
+                      "v-dialog",
+                      {
+                        attrs: { "max-width": "500px" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                return [
+                                  _c(
+                                    "v-icon",
+                                    _vm._g(
+                                      {
+                                        staticClass: "mr-2",
+                                        attrs: { small: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editItem(
+                                              item,
+                                              (_vm.createItem = false)
+                                            )
+                                          }
+                                        }
+                                      },
+                                      on
+                                    ),
+                                    [_vm._v("mdi-pencil")]
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        ),
+                        model: {
+                          value: _vm.dialog,
+                          callback: function($$v) {
+                            _vm.dialog = $$v
+                          },
+                          expression: "dialog"
+                        }
+                      },
+                      [_vm._v(" "), _c("addConfiture")],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-icon",
+                      {
+                        attrs: { small: "" },
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteItem(item)
+                          }
+                        }
+                      },
+                      [_vm._v("mdi-delete")]
+                    )
+                  ]
                 }
               }
             ])
@@ -44679,219 +44669,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e& ***!
-  \*************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-dialog",
-    {
-      attrs: { "max-width": "500px" },
-      scopedSlots: _vm._u([
-        {
-          key: "activator",
-          fn: function(ref) {
-            var on = ref.on
-            return [
-              _c(
-                "v-btn",
-                _vm._g(
-                  {
-                    staticClass: "mb-2",
-                    attrs: { color: "primary", dark: "" }
-                  },
-                  on
-                ),
-                [_c("i", { staticClass: "fas fa-plus-circle fa-2x" })]
-              )
-            ]
-          }
-        }
-      ]),
-      model: {
-        value: _vm.dialog,
-        callback: function($$v) {
-          _vm.dialog = $$v
-        },
-        expression: "dialog"
-      }
-    },
-    [
-      _vm._v(" "),
-      _c(
-        "v-card",
-        [
-          _c("v-card-title", [
-            _c("span", { staticClass: "headline" }, [
-              _vm._v(_vm._s(_vm.formTitle))
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "v-card-text",
-            [
-              _c(
-                "v-container",
-                [
-                  _c(
-                    "v-row",
-                    [
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "Intitulée" },
-                            model: {
-                              value: _vm.intitule,
-                              callback: function($$v) {
-                                _vm.intitule = $$v
-                              },
-                              expression: "intitule"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "Prix" },
-                            model: {
-                              value: _vm.prix,
-                              callback: function($$v) {
-                                _vm.prix = $$v
-                              },
-                              expression: "prix"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-select", {
-                            attrs: {
-                              items: _vm.producteurs,
-                              "item-value": "id",
-                              "item-text": "nom",
-                              label: "Producteur"
-                            },
-                            model: {
-                              value: _vm.producteur,
-                              callback: function($$v) {
-                                _vm.producteur = $$v
-                              },
-                              expression: "producteur"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12" } },
-                        [
-                          _c("v-autocomplete", {
-                            attrs: {
-                              items: _vm.fruits,
-                              "item-value": "id",
-                              "item-text": "nom",
-                              label: "Fruits",
-                              color: "white",
-                              multiple: "",
-                              "prepend-icon": "mdi-database-search",
-                              "return-object": "",
-                              "cache-items": "",
-                              "hide-no-data": "",
-                              "search-input": _vm.search
-                            },
-                            on: {
-                              "update:searchInput": function($event) {
-                                _vm.search = $event
-                              },
-                              "update:search-input": function($event) {
-                                _vm.search = $event
-                              }
-                            },
-                            model: {
-                              value: _vm.fruit,
-                              callback: function($$v) {
-                                _vm.fruit = $$v
-                              },
-                              expression: "fruit"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card-actions",
-            [
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "blue darken-1", text: "" },
-                  on: { click: _vm.close }
-                },
-                [_vm._v("Annuler")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "blue darken-1", text: "" },
-                  on: { click: _vm.save }
-                },
-                [_vm._v("Sauvegarder")]
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/layout/layout.vue?vue&type=template&id=5603cebe&":
 /*!*****************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/layout/layout.vue?vue&type=template&id=5603cebe& ***!
@@ -44926,7 +44703,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("DashboardFooter")
+      _c("Footer")
     ],
     1
   )
@@ -102042,6 +101819,23 @@ function headers() {
 
 /***/ }),
 
+/***/ "./resources/js/_helpers/role.js":
+/*!***************************************!*\
+  !*** ./resources/js/_helpers/role.js ***!
+  \***************************************/
+/*! exports provided: Role */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Role", function() { return Role; });
+var Role = {
+  admin: 'admin',
+  user: 'user'
+};
+
+/***/ }),
+
 /***/ "./resources/js/_services/authentication.service.js":
 /*!**********************************************************!*\
   !*** ./resources/js/_services/authentication.service.js ***!
@@ -102314,75 +102108,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js& ***!
-  \************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!./addConfiture.js?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/dashboard/addConfiture.vue":
-/*!************************************************************!*\
-  !*** ./resources/js/components/dashboard/addConfiture.vue ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addConfiture.vue?vue&type=template&id=39d4aa3e& */ "./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&");
-/* harmony import */ var _addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addConfiture.js?vue&type=script&lang=js& */ "./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/dashboard/addConfiture.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e& ***!
-  \*******************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./addConfiture.vue?vue&type=template&id=39d4aa3e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/layout/layout.vue":
 /*!****************************************!*\
   !*** ./resources/js/layout/layout.vue ***!
@@ -102642,6 +102367,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Home_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home.vue */ "./resources/js/components/Home.vue");
 /* harmony import */ var _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue");
 /* harmony import */ var _login_Login_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/Login.vue */ "./resources/js/login/Login.vue");
+/* harmony import */ var _js_helpers_role_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../js/_helpers/role.js */ "./resources/js/_helpers/role.js");
+/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_services/authentication.service */ "./resources/js/_services/authentication.service.js");
+
+
 
 
 
@@ -102657,16 +102386,48 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/login',
     name: 'login',
-    component: _login_Login_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _login_Login_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    meta: {
+      authorize: []
+    }
   }, {
     path: '/dashboard',
     name: 'dashboard',
-    component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    meta: {
+      authorize: [_js_helpers_role_js__WEBPACK_IMPORTED_MODULE_5__["Role"].admin]
+    }
   }, // otherwise redirect to home
   {
     path: '*',
     redirect: '/'
   }]
+});
+router.beforeEach(function (to, from, next) {
+  // redirect to login page if not logged in and trying to access a restricted page
+  var authorize = to.meta.authorize;
+
+  if (authorize && !_.isEmpty(authorize)) {
+    var currentUser = _services_authentication_service__WEBPACK_IMPORTED_MODULE_6__["authenticationService"].currentUserValue;
+
+    if (!currentUser) {
+      // not logged in so redirect to login page with the return url
+      return next({
+        path: "/login",
+        query: {
+          returnUrl: to.path
+        }
+      });
+    } // check if route is restricted by role
+
+
+    if (authorize.length && !authorize.includes(currentUser.role.name)) {
+      // role not authorised so redirect to home page
+      return next();
+    }
+  }
+
+  next();
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 

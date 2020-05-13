@@ -1,10 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" max-width="500px">
-    <template v-slot:activator="{ on }">
-      <v-btn color="primary" dark class="mb-2" v-on="on">
-        <i class="fas fa-plus-circle fa-2x"></i>
-      </v-btn>
-    </template>
+  
     <v-card>
       <v-card-title>
         <span class="headline">{{ formTitle }}</span>
@@ -31,9 +26,8 @@
             <v-col cols="12">
               <v-autocomplete
                 :items="fruits"
-                item-value="id"
-                v-model="fruit"
                 item-text="nom"
+                v-model="fruitsliste"
                 label="Fruits"
                 color="white"
                 multiple
@@ -42,7 +36,13 @@
                 cache-items
                 hide-no-data
                 :search-input.sync="search"
-              ></v-autocomplete>
+              >
+                <template>
+                  <v-btn icon color="teal" :disabled="fruits.lenght == 0">
+                    <v-icon>mdi-plus-circle</v-icon>
+                  </v-btn>
+                </template>
+              </v-autocomplete>
             </v-col>
           </v-row>
         </v-container>
@@ -54,7 +54,7 @@
         <v-btn color="blue darken-1" text @click="save">Sauvegarder</v-btn>
       </v-card-actions>
     </v-card>
-  </v-dialog>
+  
 </template>
 
 <script src="./addConfiture.js"></script>

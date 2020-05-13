@@ -17,11 +17,13 @@ class ConfituresResource extends JsonResource
         $producteur =  new ProducteursResource($this->producteur);
 
         return [
+            'id' => $this->id,
             'intitule' => $this->intitule,
             'prix' => $this->prix,
             'producteur' => $producteur,
             'recompense' => $this->recompenses,
-            'fruit' => $this->fruits,
+            'fruits' => $this->fruits,
+            // 'fruits' => FruitsResource::collection($this->whenLoaded('fruits'))
         ];
     }
 }

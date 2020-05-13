@@ -12,7 +12,7 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <DashboardFooter />
+    <Footer />
   </v-app>
 </template>
 
@@ -22,7 +22,7 @@ import Footer from "../navigation/Footer";
 export default {
   components: {
     Navbar,
-    DashboardFooter: Footer
+    Footer
   }
 };
 </script>

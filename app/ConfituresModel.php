@@ -8,7 +8,7 @@ class ConfituresModel extends Model
 {
     protected $table = 'confiture_table';
     protected $fillable = [
-        'intitule', 'prix', 'id_producteur',
+        'intitule', 'prix', 'id_producteur', 'fruits'
     ];
     public $timestamps = false;
 

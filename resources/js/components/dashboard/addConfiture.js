@@ -6,54 +6,44 @@ export default {
             intitule: '',
             prix: '',
             producteur: '',
-            fruit: '',
-            dialog: false,
+            fruitsliste: [],
             producteurs: [],
             fruits: [],
             search: null,
+            editedItem: {
+                intitule: '',
+                producteur: 0,
+                fruits: 0,
+            },
         }
     },
     created() {
         this.getProducteurs();
         this.getFruits();
     },
-    watch: {
-        search(val) {
-            if (val && val.length > 2) {
-                axios.get('/api/fruitsliste', {
-                        params: {
-                            query: val
-                        }
-                    })
-                    .then(({
-                            data
-                        }) =>
-                        console.log(data.data)
-                    )
-            }
-        }
-    },
     computed: {
-        formTitle() {
-            return 'Ajouter une confiture';
+        formTitle(e) {
+            // je veuxrecevoir createItem == "valeur" || définit si le titre change
+            console.log(this);
+            return this.createItem == true ? 'Nouvelle confiture' : 'Edité une confiture';
         },
     },
     methods: {
-        save(e) {
+        save() {
+
+            //le fruit (objet) en arrivant ici doit avoir
+            //  soit
+            //      {{id:"id", nom:"nom"}}
+            //  soit
+            //      {{nom:"nom"}}
+
             axios.post('/api/create', {
-                    intitule: this.intitule,
-                    prix: this.prix,
-                    id_producteur: this.producteur,
-                })
-                .then(({
-                    data
-                }) => {
-                    console.log(data.data);
-                })
-            this.close()
-        },
-        close() {
-            this.dialog = false
+                intitule: this.intitule,
+                prix: this.prix,
+                id_producteur: this.producteur,
+                fruits: this.fruitsliste,
+            })
+            this.dialog = false;
         },
         getProducteurs() {
             axios.get("/api/producteurs")
@@ -75,6 +65,11 @@ export default {
                     })
                 );
         },
+
+        // fermer le modal || ne fonctionne pas
+        close () {
+            this.dialog = false;
+          },
     },
 
 }
