@@ -52,47 +52,80 @@ class ConfitureController extends Controller
                 'intitule' => 'required',
                 'prix' => 'required',
                 'id_producteur' => 'required',
-                'fruits' => '',
+                'fruits' => 'required',
+                'id' => ''
             ],
             [
                 'required' => 'Le champs :attribute est requis', // :attribute renvoie le champs / l'id de l'element en erreur
             ]
         )->validate();
         
-        $addConfiture = new ConfituresModel;
+        // le find à partir d'ici //
+        // edit //
+        $confiture = ConfituresModel::with(['fruits', 'producteur'])->find($data['id']);
+
+        if (!$confiture) {
+            $addConfiture = new ConfituresModel;
+        } else {
+            $addConfiture = $confiture;
+        }
+        
         $addConfiture->intitule = $data['intitule'];
         $addConfiture->prix = $data['prix'];
-        $producteur = ProducteursModel::find($data['id_producteur']);
 
-        if (!$producteur) {
-            return "Toto ne connait pas le producteur!";
+        if ($confiture && isset($confiture->producteur) && $confiture->producteur->id != $data['id_producteur']) {
+        } else {
+            $producteur = ProducteursModel::find($data['id_producteur']);
+            if (!$producteur) {
+                return "Toto ne connait pas le producteur!";
+            }
+            $addConfiture->producteur()->associate($producteur);
         }
-
-        $addConfiture->producteur()->associate($producteur);
+ 
         $addConfiture->save();
 
-        $fruits = [];
-        if (is_array($data['fruits'])) {
-            foreach ($data['fruits'] as $_fruit) {
-                if(isset($_fruit['id'])) {
-                    $fruit = FruitsModel::find($_fruit['id']);
-                    if (!$fruit) {
-                        return "Toto n'as pas trouver les fruits!";
-                    }
-                    $fruits[] = $fruit->id;
-                } else {
-                    //ici on vas crer un objet par la suite
-                    //objet
-                    // X : {{ nom : "nom du fruit donner par le client" }}
-                    return "Toto est perdue avec les ids";
-                    
-                }
+        
+        $clientFruits = $data['fruits'];
+        $confiFruits = []; //stocké les id de la table pivot
+        $toDetach =[];
+        $toAttach=[];
+        $idClientFruits=[];
+
+
+        foreach ($clientFruits as $_clientFruits) {
+            $idClientFruits[] = $_clientFruits['id']; // {{id, nom}, id}
+        }
+
+        // je veux {id}
+
+        if ($confiture && isset($confiture->fruits)) {
+            foreach ($confiture->fruits as $_fruit) {
+                $confiFruits[] = $_fruit->id;
             }
         }
-        if (!empty($fruits)) {
-            $addConfiture->fruits()->attach($fruits);
-            
+
+        // on verifie les ids présent
+        foreach ($confiFruits as $id) {
+            if (!in_array($id, $idClientFruits)) {
+                $toDetach []= $id;
+            }
         }
+
+        // on verifie les ressemblance
+        foreach ($idClientFruits as $id) {
+            if (!in_array($id, $confiFruits)) {
+                $toAttach []= $id;
+            }
+        }
+
+        if (!empty($toDetach)) {
+            $addConfiture->fruits()->detach($toDetach);
+        }
+
+        if (!empty($toAttach)) {
+            $addConfiture->fruits()->attach($toAttach);
+        }
+
         return new FruitsResource($addConfiture);
     }
 
@@ -146,10 +179,13 @@ class ConfitureController extends Controller
         $producteurs = ProducteursModel::all();
         return ProducteursResource::collection($producteurs);
     }
-    public function getFruits()
+    public function getFruits(Request $request)
     {
-        $fruits = FruitsModel::all();
-        return FruitsResource::collection($fruits);
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $fruits = FruitsModel::where('nom', 'like', '%' . $query . '%')->get();
+            return response()->json($fruits);
+        }
     }
 
     public function getNewConfiture()

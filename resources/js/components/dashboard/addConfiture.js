@@ -1,49 +1,71 @@
 import axios from 'axios';
 
 export default {
+    props: {
+        confiture: {
+            default: function () {
+                return {
+                    id: '',
+                    intitule: '',
+                    prix: '',
+                    producteur: '',
+                    fruits: [],
+                    documents: [],
+                }
+            }
+        },
+        update: {
+            default: false
+        },
+    },
     data() {
         return {
-            intitule: '',
-            prix: '',
-            producteur: '',
-            fruitsliste: [],
             producteurs: [],
             fruits: [],
             search: null,
-            editedItem: {
-                intitule: '',
-                producteur: 0,
-                fruits: 0,
-            },
+            show: false,
+        }
+    },
+    watch: {
+        search(val) {
+            if (val && val.length > 2) {
+                this.fruits.name = val;
+                axios.get("/api/fruits", {
+                        params: {
+                            query: val
+                        }
+                    })
+                    .then(({
+                        data
+                    }) => {
+                        data.forEach(data => {
+                            this.fruits.push(data);
+                        })
+                    });
+            }
         }
     },
     created() {
         this.getProducteurs();
-        this.getFruits();
     },
     computed: {
-        formTitle(e) {
-            // je veuxrecevoir createItem == "valeur" || définit si le titre change
-            console.log(this);
-            return this.createItem == true ? 'Nouvelle confiture' : 'Edité une confiture';
-        },
+        formTitle() {
+            return this.update == false ? 'Toto veut crée' : 'Toto veux Éditer'
+        }
     },
     methods: {
         save() {
-
-            //le fruit (objet) en arrivant ici doit avoir
-            //  soit
-            //      {{id:"id", nom:"nom"}}
-            //  soit
-            //      {{nom:"nom"}}
-
             axios.post('/api/create', {
-                intitule: this.intitule,
-                prix: this.prix,
-                id_producteur: this.producteur,
-                fruits: this.fruitsliste,
-            })
-            this.dialog = false;
+                    intitule: this.confiture.intitule,
+                    prix: this.confiture.prix,
+                    id_producteur: this.confiture.producteur,
+                    fruits: this.confiture.fruits,
+                    id: this.confiture.id == '' ? '' : this.confiture.id,
+                })
+                .then((data) => {
+                    console.log(data)
+                })
+            this.show = false;
         },
         getProducteurs() {
             axios.get("/api/producteurs")
@@ -55,21 +77,24 @@ export default {
                     })
                 );
         },
-        getFruits() {
-            axios.get("/api/fruits")
-                .then(({
-                        data
-                    }) =>
-                    data.data.forEach(data => {
-                        this.fruits.push(data);
-                    })
-                );
+        editConfiture() {
+            this.id = this.confiture.id
+            this.intitule = this.confiture.intitule
+            this.prix = this.confiture.prix
+            this.producteur = this.confiture.producteur
+            this.fruitsListe = this.confiture.fruits
+            _.merge(this.fruits, this.fruitsListe)
         },
-
-        // fermer le modal || ne fonctionne pas
-        close () {
-            this.dialog = false;
-          },
+        
+        // a metre plus tard dans le "watch"
+        importer() {
+            // charger le document
+            axios.post("api/documents", {
+                documents: this.confiture.documents,
+            })
+            .then((data) => {
+                console.log(data);
+            })
+        }
     },
-
 }

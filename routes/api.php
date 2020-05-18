@@ -23,8 +23,11 @@ Route::get('/logout', 'AuthController@logout')->middleware('auth');
 
 Route::get('/liste', 'ConfitureController@index');
 Route::post('/create', 'ConfitureController@store');
+Route::post('/confitures/{id}', 'ConfituresController@update')->where('id', "[0-9]+");
 Route::get('/producteurs', 'ConfitureController@getProducteurs');
 Route::get('/fruits', 'ConfitureController@getFruits');
 Route::get('/users', 'UserController@index');
 
 Route::get('/newconfiture', 'ConfitureController@getNewConfiture');
+
+Route::post('/documents', 'DocumentsController@getDocument');

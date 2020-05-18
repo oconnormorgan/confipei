@@ -1944,9 +1944,69 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/js/components/Dashboard.js?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/morgan/Bureau/projet/ConfiPei/resources/js/components/Dashboard.js: Support for the experimental syntax 'decorators-legacy' isn't currently enabled (91:9):\n\n\u001b[0m \u001b[90m 89 | \u001b[39m        }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 90 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 91 | \u001b[39m        \u001b[33m@\u001b[39mclick\u001b[33m.\u001b[39mstop\u001b[33m=\u001b[39m\u001b[32m\"show=false\"\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 92 | \u001b[39m    }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 93 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 94 | \u001b[39m}\u001b[0m\n    at Parser._raise (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:742:17)\n    at Parser.raiseWithData (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:735:17)\n    at Parser.expectOnePlugin (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:8794:18)\n    at Parser.parseDecorator (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11286:10)\n    at Parser.parseObjectMember (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10433:30)\n    at Parser.parseObj (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10396:25)\n    at Parser.parseExprAtom (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10017:28)\n    at Parser.parseExprSubscripts (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9624:23)\n    at Parser.parseMaybeUnary (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9604:21)\n    at Parser.parseExprOps (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9474:23)\n    at Parser.parseMaybeConditional (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9447:23)\n    at Parser.parseMaybeAssign (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9402:21)\n    at Parser.parseObjectProperty (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10534:101)\n    at Parser.parseObjPropValue (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10559:101)\n    at Parser.parseObjectMember (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10483:10)\n    at Parser.parseObj (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10396:25)\n    at Parser.parseExprAtom (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:10017:28)\n    at Parser.parseExprSubscripts (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9624:23)\n    at Parser.parseMaybeUnary (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9604:21)\n    at Parser.parseExprOps (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9474:23)\n    at Parser.parseMaybeConditional (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9447:23)\n    at Parser.parseMaybeAssign (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:9402:21)\n    at Parser.parseExportDefaultExpression (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12306:24)\n    at Parser.parseExport (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12208:31)\n    at Parser.parseStatementContent (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11208:27)\n    at Parser.parseStatement (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11104:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11679:25)\n    at Parser.parseBlockBody (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11665:10)\n    at Parser.parseTopLevel (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:11035:10)\n    at Parser.parse (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12671:10)\n    at parse (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/parser/lib/index.js:12722:38)\n    at parser (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/core/lib/transformation/normalize-file.js:93:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/home/morgan/Bureau/projet/ConfiPei/node_modules/@babel/core/lib/transformation/index.js:31:50)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _dashboard_addConfiture_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dashboard/addConfiture.vue */ "./resources/js/components/dashboard/addConfiture.vue");
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    addConfiture: _dashboard_addConfiture_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      headers: [{
+        text: 'Confitures',
+        align: 'start',
+        value: 'intitule'
+      }, {
+        text: 'Prix',
+        value: 'prix'
+      }, {
+        text: 'Producteurs',
+        value: 'producteur'
+      }, {
+        text: 'Fruits',
+        value: 'fruits'
+      }, {
+        text: 'Actions',
+        value: 'actions'
+      }],
+      datas: [],
+      confitures: [],
+      showConfitureForm: false
+    };
+  },
+  created: function created() {
+    this.initialize();
+  },
+  methods: {
+    initialize: function initialize() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/liste').then(function (_ref) {
+        var data = _ref.data;
+        return data.data.forEach(function (data) {
+          _this.datas.push(data);
+        });
+      })["catch"]();
+    },
+    displayFruits: function displayFruits(items) {
+      var fruits = [];
+      items.forEach(function (item) {
+        fruits.push(item.nom);
+      });
+      return fruits.join(', ');
+    },
+    uploadItem: function uploadItem(item) {
+      console.log(item);
+    }
+  }
+});
 
 /***/ }),
 
@@ -1969,6 +2029,117 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     goBack: function goBack() {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    confiture: {
+      "default": function _default() {
+        return {
+          id: '',
+          intitule: '',
+          prix: '',
+          producteur: '',
+          fruits: [],
+          documents: []
+        };
+      }
+    },
+    update: {
+      "default": false
+    }
+  },
+  data: function data() {
+    return {
+      producteurs: [],
+      fruits: [],
+      search: null,
+      show: false
+    };
+  },
+  watch: {
+    search: function search(val) {
+      var _this = this;
+
+      if (val && val.length > 2) {
+        this.fruits.name = val;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/fruits", {
+          params: {
+            query: val
+          }
+        }).then(function (_ref) {
+          var data = _ref.data;
+          data.forEach(function (data) {
+            _this.fruits.push(data);
+          });
+        });
+      }
+    }
+  },
+  created: function created() {
+    this.getProducteurs();
+  },
+  computed: {
+    formTitle: function formTitle() {
+      return this.update == false ? 'Toto veut crée' : 'Toto veux Éditer';
+    }
+  },
+  methods: {
+    save: function save() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/create', {
+        intitule: this.confiture.intitule,
+        prix: this.confiture.prix,
+        id_producteur: this.confiture.producteur,
+        fruits: this.confiture.fruits,
+        id: this.confiture.id == '' ? '' : this.confiture.id
+      }).then(function (data) {
+        console.log(data);
+      });
+      this.show = false;
+    },
+    getProducteurs: function getProducteurs() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/producteurs").then(function (_ref2) {
+        var data = _ref2.data;
+        return data.data.forEach(function (data) {
+          _this2.producteurs.push(data);
+        });
+      });
+    },
+    editConfiture: function editConfiture() {
+      this.id = this.confiture.id;
+      this.intitule = this.confiture.intitule;
+      this.prix = this.confiture.prix;
+      this.producteur = this.confiture.producteur;
+      this.fruitsListe = this.confiture.fruits;
+
+      _.merge(this.fruits, this.fruitsListe);
+    },
+    // a metre plus tard dans le "watch"
+    importer: function importer() {
+      // charger le document
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/documents", {
+        documents: this.confiture.documents
+      }).then(function (data) {
+        console.log(data);
+      });
     }
   }
 });
@@ -44468,60 +44639,13 @@ var render = function() {
                         _vm._v(" "),
                         _c("v-spacer"),
                         _vm._v(" "),
-                        _c(
-                          "v-dialog",
-                          {
-                            attrs: { "max-width": "500px" },
-                            scopedSlots: _vm._u([
-                              {
-                                key: "activator",
-                                fn: function(ref) {
-                                  var on = ref.on
-                                  return [
-                                    _c(
-                                      "v-btn",
-                                      _vm._g(
-                                        {
-                                          staticClass: "mb-2",
-                                          attrs: { color: "primary", dark: "" },
-                                          on: {
-                                            click: [
-                                              function($event) {
-                                                return _vm.createItem(
-                                                  (_vm.createItem = true)
-                                                )
-                                              },
-                                              function($event) {
-                                                $event.stopPropagation()
-                                                _vm.modal = true
-                                              }
-                                            ]
-                                          }
-                                        },
-                                        on
-                                      ),
-                                      [
-                                        _c("i", {
-                                          staticClass:
-                                            "fas fa-plus-circle fa-2x"
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                }
-                              }
-                            ]),
-                            model: {
-                              value: _vm.dialog,
-                              callback: function($$v) {
-                                _vm.dialog = $$v
-                              },
-                              expression: "dialog"
+                        _c("addConfiture", {
+                          on: {
+                            create: function($event) {
+                              return _vm.confitures.push($event)
                             }
-                          },
-                          [_vm._v(" "), _c("addConfiture")],
-                          1
-                        )
+                          }
+                        })
                       ],
                       1
                     )
@@ -44562,67 +44686,9 @@ var render = function() {
                 fn: function(ref) {
                   var item = ref.item
                   return [
-                    _c(
-                      "v-dialog",
-                      {
-                        attrs: { "max-width": "500px" },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                return [
-                                  _c(
-                                    "v-icon",
-                                    _vm._g(
-                                      {
-                                        staticClass: "mr-2",
-                                        attrs: { small: "" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editItem(
-                                              item,
-                                              (_vm.createItem = false)
-                                            )
-                                          }
-                                        }
-                                      },
-                                      on
-                                    ),
-                                    [_vm._v("mdi-pencil")]
-                                  )
-                                ]
-                              }
-                            }
-                          ],
-                          null,
-                          true
-                        ),
-                        model: {
-                          value: _vm.dialog,
-                          callback: function($$v) {
-                            _vm.dialog = $$v
-                          },
-                          expression: "dialog"
-                        }
-                      },
-                      [_vm._v(" "), _c("addConfiture")],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-icon",
-                      {
-                        attrs: { small: "" },
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteItem(item)
-                          }
-                        }
-                      },
-                      [_vm._v("mdi-delete")]
-                    )
+                    _c("addConfiture", {
+                      attrs: { confiture: item, update: true }
+                    })
                   ]
                 }
               }
@@ -44661,6 +44727,367 @@ var render = function() {
       _c("div", [_c("H1", [_vm._v("Toto est à l'accueil")])], 1)
     ])
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    {
+      attrs: { "max-width": "500px" },
+      scopedSlots: _vm._u([
+        {
+          key: "activator",
+          fn: function(ref) {
+            var on = ref.on
+            return [
+              !_vm.update
+                ? _c(
+                    "v-btn",
+                    _vm._g(
+                      {
+                        staticClass: "mb-2",
+                        attrs: { color: "primary", dark: "" }
+                      },
+                      on
+                    ),
+                    [_c("i", { staticClass: "fas fa-plus-circle fa-2x" })]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.update
+                ? _c(
+                    "v-btn",
+                    _vm._g({ attrs: { icon: "", small: "" } }, on),
+                    [
+                      _c(
+                        "v-icon",
+                        {
+                          staticClass: "mr-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.editConfiture()
+                            }
+                          }
+                        },
+                        [_vm._v("mdi-pencil")]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ]
+          }
+        }
+      ]),
+      model: {
+        value: _vm.show,
+        callback: function($$v) {
+          _vm.show = $$v
+        },
+        expression: "show"
+      }
+    },
+    [
+      _vm._v(" "),
+      _c(
+        "v-card",
+        [
+          _c("v-card-title", [
+            _c("span", { staticClass: "headline" }, [
+              _vm._v(_vm._s(_vm.formTitle))
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "v-card-text",
+            [
+              _c(
+                "v-container",
+                [
+                  _c(
+                    "v-row",
+                    [
+                      _c(
+                        "v-col",
+                        { attrs: { cols: "12", sm: "6", md: "4" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Intitulée" },
+                            model: {
+                              value: _vm.confiture.intitule,
+                              callback: function($$v) {
+                                _vm.$set(_vm.confiture, "intitule", $$v)
+                              },
+                              expression: "confiture.intitule"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { attrs: { cols: "12", sm: "6", md: "4" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Prix" },
+                            model: {
+                              value: _vm.confiture.prix,
+                              callback: function($$v) {
+                                _vm.$set(_vm.confiture, "prix", $$v)
+                              },
+                              expression: "confiture.prix"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { attrs: { cols: "12", sm: "6", md: "4" } },
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              items: _vm.producteurs,
+                              "item-value": "id",
+                              "item-text": "nom",
+                              label: "Producteur"
+                            },
+                            model: {
+                              value: _vm.confiture.producteur,
+                              callback: function($$v) {
+                                _vm.$set(_vm.confiture, "producteur", $$v)
+                              },
+                              expression: "confiture.producteur"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { attrs: { cols: "12" } },
+                        [
+                          _c(
+                            "v-autocomplete",
+                            {
+                              attrs: {
+                                items: _vm.fruits,
+                                "item-text": "nom",
+                                label: "Fruits",
+                                color: "white",
+                                multiple: "",
+                                "prepend-icon": "mdi-database-search",
+                                "return-object": "",
+                                "cache-items": "",
+                                "hide-no-data": "",
+                                "search-input": _vm.search
+                              },
+                              on: {
+                                "update:searchInput": function($event) {
+                                  _vm.search = $event
+                                },
+                                "update:search-input": function($event) {
+                                  _vm.search = $event
+                                }
+                              },
+                              model: {
+                                value: _vm.confiture.fruits,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.confiture, "fruits", $$v)
+                                },
+                                expression: "confiture.fruits"
+                              }
+                            },
+                            [
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      icon: "",
+                                      color: "teal",
+                                      disabled: _vm.fruits.lenght == 0
+                                    }
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-plus-circle")])],
+                                  1
+                                )
+                              ]
+                            ],
+                            2
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { attrs: { cols: "12" } },
+                        [
+                          [
+                            _c(
+                              "v-row",
+                              [
+                                _c(
+                                  "v-col",
+                                  { attrs: { cols: "9" } },
+                                  [
+                                    _c("v-file-input", {
+                                      attrs: {
+                                        color: "deep-purple accent-4",
+                                        counter: "",
+                                        label: "documents input",
+                                        multiple: "",
+                                        placeholder:
+                                          "Selectionner vos documents",
+                                        "prepend-icon": "mdi-paperclip",
+                                        outlined: ""
+                                      },
+                                      scopedSlots: _vm._u([
+                                        {
+                                          key: "selection",
+                                          fn: function(ref) {
+                                            var index = ref.index
+                                            var text = ref.text
+                                            return [
+                                              index < 2
+                                                ? _c(
+                                                    "v-chip",
+                                                    {
+                                                      attrs: {
+                                                        color:
+                                                          "deep-purple accent-4",
+                                                        dark: "",
+                                                        label: "",
+                                                        small: ""
+                                                      }
+                                                    },
+                                                    [_vm._v(_vm._s(text))]
+                                                  )
+                                                : index === 2
+                                                ? _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "overline grey--text text--darken-3 mx-2"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "+" +
+                                                          _vm._s(
+                                                            _vm.documents
+                                                              .length - 2
+                                                          ) +
+                                                          " File(s)"
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e()
+                                            ]
+                                          }
+                                        }
+                                      ]),
+                                      model: {
+                                        value: _vm.confiture.documents,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.confiture,
+                                            "documents",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "confiture.documents"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-col",
+                                  { attrs: { cols: "2" } },
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          small: "",
+                                          color: "blue darken-1",
+                                          text: ""
+                                        },
+                                        on: { click: _vm.importer }
+                                      },
+                                      [_vm._v("Importer")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        ],
+                        2
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-btn", { attrs: { color: "blue darken-1", text: "" } }, [
+                _vm._v("Annuler")
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "blue darken-1", text: "" },
+                  on: { click: _vm.save }
+                },
+                [_vm._v("Sauvegarder")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -102103,6 +102530,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!./addConfiture.js?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/addConfiture.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/dashboard/addConfiture.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addConfiture.vue?vue&type=template&id=39d4aa3e& */ "./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&");
+/* harmony import */ var _addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addConfiture.js?vue&type=script&lang=js& */ "./resources/js/components/dashboard/addConfiture.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _addConfiture_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dashboard/addConfiture.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./addConfiture.vue?vue&type=template&id=39d4aa3e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/addConfiture.vue?vue&type=template&id=39d4aa3e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addConfiture_vue_vue_type_template_id_39d4aa3e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
