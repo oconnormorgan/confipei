@@ -2056,8 +2056,7 @@ __webpack_require__.r(__webpack_exports__);
           intitule: '',
           prix: '',
           producteur: '',
-          fruits: [],
-          documents: []
+          fruits: []
         };
       }
     },
@@ -2070,7 +2069,8 @@ __webpack_require__.r(__webpack_exports__);
       producteurs: [],
       fruits: [],
       search: null,
-      show: false
+      show: false,
+      document: document
     };
   },
   watch: {
@@ -2107,7 +2107,8 @@ __webpack_require__.r(__webpack_exports__);
         prix: this.confiture.prix,
         id_producteur: this.confiture.producteur,
         fruits: this.confiture.fruits,
-        id: this.confiture.id == '' ? '' : this.confiture.id
+        id: this.confiture.id == '' ? '' : this.confiture.id,
+        document: this.confiture.document
       }).then(function (data) {
         console.log(data);
       });
@@ -2129,17 +2130,7 @@ __webpack_require__.r(__webpack_exports__);
       this.prix = this.confiture.prix;
       this.producteur = this.confiture.producteur;
       this.fruitsListe = this.confiture.fruits;
-
-      _.merge(this.fruits, this.fruitsListe);
-    },
-    // a metre plus tard dans le "watch"
-    importer: function importer() {
-      // charger le document
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/documents", {
-        documents: this.confiture.documents
-      }).then(function (data) {
-        console.log(data);
-      });
+      this.document = this.confiture.document, _.merge(this.fruits, this.fruitsListe);
     }
   }
 });
@@ -44948,106 +44939,65 @@ var render = function() {
                         { attrs: { cols: "12" } },
                         [
                           [
-                            _c(
-                              "v-row",
-                              [
-                                _c(
-                                  "v-col",
-                                  { attrs: { cols: "9" } },
-                                  [
-                                    _c("v-file-input", {
-                                      attrs: {
-                                        color: "deep-purple accent-4",
-                                        counter: "",
-                                        label: "documents input",
-                                        multiple: "",
-                                        placeholder:
-                                          "Selectionner vos documents",
-                                        "prepend-icon": "mdi-paperclip",
-                                        outlined: ""
-                                      },
-                                      scopedSlots: _vm._u([
-                                        {
-                                          key: "selection",
-                                          fn: function(ref) {
-                                            var index = ref.index
-                                            var text = ref.text
-                                            return [
-                                              index < 2
-                                                ? _c(
-                                                    "v-chip",
-                                                    {
-                                                      attrs: {
-                                                        color:
-                                                          "deep-purple accent-4",
-                                                        dark: "",
-                                                        label: "",
-                                                        small: ""
-                                                      }
-                                                    },
-                                                    [_vm._v(_vm._s(text))]
-                                                  )
-                                                : index === 2
-                                                ? _c(
-                                                    "span",
-                                                    {
-                                                      staticClass:
-                                                        "overline grey--text text--darken-3 mx-2"
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "+" +
-                                                          _vm._s(
-                                                            _vm.documents
-                                                              .length - 2
-                                                          ) +
-                                                          " File(s)"
-                                                      )
-                                                    ]
-                                                  )
-                                                : _vm._e()
-                                            ]
-                                          }
-                                        }
-                                      ]),
-                                      model: {
-                                        value: _vm.confiture.documents,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.confiture,
-                                            "documents",
-                                            $$v
+                            _c("v-file-input", {
+                              attrs: {
+                                color: "deep-purple accent-4",
+                                counter: "",
+                                label: "Document",
+                                placeholder: "Selectionner votre document",
+                                "prepend-icon": "mdi-paperclip",
+                                outlined: ""
+                              },
+                              scopedSlots: _vm._u([
+                                {
+                                  key: "selection",
+                                  fn: function(ref) {
+                                    var index = ref.index
+                                    var text = ref.text
+                                    return [
+                                      index < 2
+                                        ? _c(
+                                            "v-chip",
+                                            {
+                                              attrs: {
+                                                color: "deep-purple accent-4",
+                                                dark: "",
+                                                label: "",
+                                                small: ""
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(text))]
                                           )
-                                        },
-                                        expression: "confiture.documents"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-col",
-                                  { attrs: { cols: "2" } },
-                                  [
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: {
-                                          small: "",
-                                          color: "blue darken-1",
-                                          text: ""
-                                        },
-                                        on: { click: _vm.importer }
-                                      },
-                                      [_vm._v("Importer")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
+                                        : index === 2
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "overline grey--text text--darken-3 mx-2"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "+" +
+                                                  _vm._s(
+                                                    _vm.documents.length - 2
+                                                  ) +
+                                                  " File(s)"
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  }
+                                }
+                              ]),
+                              model: {
+                                value: _vm.confiture.document,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.confiture, "document", $$v)
+                                },
+                                expression: "confiture.document"
+                              }
+                            })
                           ]
                         ],
                         2

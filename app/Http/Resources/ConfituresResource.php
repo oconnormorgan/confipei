@@ -23,6 +23,7 @@ class ConfituresResource extends JsonResource
             'producteur' => $producteur,
             'recompense' => $this->recompenses,
             'fruits' => $this->fruits,
+            'document' => $this->document,
             // 'fruits' => FruitsResource::collection($this->whenLoaded('fruits'))
         ];
     }

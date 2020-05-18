@@ -11,6 +11,7 @@ use App\Http\Resources\UserResource;
 use App\ProducteursModel;
 use App\UsersModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use LengthException;
 
@@ -53,7 +54,8 @@ class ConfitureController extends Controller
                 'prix' => 'required',
                 'id_producteur' => 'required',
                 'fruits' => 'required',
-                'id' => ''
+                'id' => '',
+                'document' => '',
             ],
             [
                 'required' => 'Le champs :attribute est requis', // :attribute renvoie le champs / l'id de l'element en erreur
@@ -125,6 +127,27 @@ class ConfitureController extends Controller
         if (!empty($toAttach)) {
             $addConfiture->fruits()->attach($toAttach);
         }
+
+        //Upload
+
+        //si on recupere l'element
+        //  on recupere l'extension
+        //  on lui atribue un nouveauNom
+        //  on l'ajoute au dossier nouveauNom + extension
+        //sinon
+        //  ne connais pas le document
+
+        // $document = $request->document;
+        return $request; // document array vide
+        if ($document) {
+            $extension = $document->extension();
+            return $extension;
+        } else {
+            return "toto ne reconais pas 'document'";
+        }
+
+        // Storage::disk('local')->put(, 'Contents');
+        return "test en cour // echec";
 
         return new FruitsResource($addConfiture);
     }

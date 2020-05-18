@@ -54,38 +54,30 @@
             </v-col>
             <v-col cols="12">
               <template>
-                <v-row>
-                  <v-col cols="9">
-                    <v-file-input
-                      v-model="confiture.documents"
+                <v-file-input
+                  v-model="confiture.document"
+                  color="deep-purple accent-4"
+                  counter
+                  label="Document"
+                  placeholder="Selectionner votre document"
+                  prepend-icon="mdi-paperclip"
+                  outlined
+                >
+                  <template v-slot:selection="{ index, text }">
+                    <v-chip
+                      v-if="index < 2"
                       color="deep-purple accent-4"
-                      counter
-                      label="documents input"
-                      multiple
-                      placeholder="Selectionner vos documents"
-                      prepend-icon="mdi-paperclip"
-                      outlined
-                    >
-                      <template v-slot:selection="{ index, text }">
-                        <v-chip
-                          v-if="index < 2"
-                          color="deep-purple accent-4"
-                          dark
-                          label
-                          small
-                        >{{ text }}</v-chip>
+                      dark
+                      label
+                      small
+                    >{{ text }}</v-chip>
 
-                        <span
-                          v-else-if="index === 2"
-                          class="overline grey--text text--darken-3 mx-2"
-                        >+{{ documents.length - 2 }} File(s)</span>
-                      </template>
-                    </v-file-input>
-                  </v-col>
-                  <v-col cols="2">
-                    <v-btn small color="blue darken-1" text @click="importer">Importer</v-btn>
-                  </v-col>
-                </v-row>
+                    <span
+                      v-else-if="index === 2"
+                      class="overline grey--text text--darken-3 mx-2"
+                    >+{{ documents.length - 2 }} File(s)</span>
+                  </template>
+                </v-file-input>
               </template>
             </v-col>
           </v-row>

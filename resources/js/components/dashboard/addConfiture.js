@@ -10,7 +10,6 @@ export default {
                     prix: '',
                     producteur: '',
                     fruits: [],
-                    documents: [],
                 }
             }
         },
@@ -24,6 +23,7 @@ export default {
             fruits: [],
             search: null,
             show: false,
+            document,
         }
     },
     watch: {
@@ -61,6 +61,7 @@ export default {
                     id_producteur: this.confiture.producteur,
                     fruits: this.confiture.fruits,
                     id: this.confiture.id == '' ? '' : this.confiture.id,
+                    document: this.confiture.document,
                 })
                 .then((data) => {
                     console.log(data)
@@ -83,18 +84,8 @@ export default {
             this.prix = this.confiture.prix
             this.producteur = this.confiture.producteur
             this.fruitsListe = this.confiture.fruits
+            this.document = this.confiture.document,
             _.merge(this.fruits, this.fruitsListe)
         },
-        
-        // a metre plus tard dans le "watch"
-        importer() {
-            // charger le document
-            axios.post("api/documents", {
-                documents: this.confiture.documents,
-            })
-            .then((data) => {
-                console.log(data);
-            })
-        }
     },
 }
