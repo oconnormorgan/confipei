@@ -27,7 +27,3 @@ Route::post('/confitures/{id}', 'ConfituresController@update')->where('id', "[0-
 Route::get('/producteurs', 'ConfitureController@getProducteurs');
 Route::get('/fruits', 'ConfitureController@getFruits');
 Route::get('/users', 'UserController@index');
-
-Route::get('/newconfiture', 'ConfitureController@getNewConfiture');
-
-Route::post('/documents', 'DocumentsController@getDocument');

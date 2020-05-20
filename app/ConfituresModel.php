@@ -8,12 +8,17 @@ class ConfituresModel extends Model
 {
     protected $table = 'confiture_table';
     protected $fillable = [
-        'id', 'intitule', 'prix', 'id_producteur', 'fruits', 'document'
+        'id', 'intitule', 'prix', 'id_producteur', 'fruits',
+        //  'image'
     ];
     public $timestamps = false;
 
     public function producteur(){
         return $this->belongsTo(ProducteursModel::class, 'id_producteur'); 
+    }
+
+    public function image(){
+        return $this->belongsTo(ImagesModel::class, 'id_image');
     }
 
     public function recompenses(){
@@ -27,4 +32,5 @@ class ConfituresModel extends Model
     public function commandes(){
         return $this->belongsToMany(CommandesModel::class, 'commande_has_confiture', 'id_confiture', 'id_commande');
     }
+
 }

@@ -48,14 +48,14 @@ class ConfitureController extends Controller
     {
         //Validation des données entrées
         $data = Validator::make(
-            $request->input(),
+            $request->all(),
             [
                 'intitule' => 'required',
                 'prix' => 'required',
                 'id_producteur' => 'required',
                 'fruits' => 'required',
                 'id' => '',
-                'document' => '',
+                'image' => 'nullable',
             ],
             [
                 'required' => 'Le champs :attribute est requis', // :attribute renvoie le champs / l'id de l'element en erreur
@@ -135,19 +135,15 @@ class ConfitureController extends Controller
         //  on lui atribue un nouveauNom
         //  on l'ajoute au dossier nouveauNom + extension
         //sinon
-        //  ne connais pas le document
+        //  ne connais pas le image
 
-        // $document = $request->document;
-        return $request; // document array vide
-        if ($document) {
-            $extension = $document->extension();
-            return $extension;
-        } else {
-            return "toto ne reconais pas 'document'";
-        }
+        $name = $request->file('image')->getClientOriginalName();
+        return $name;
 
-        // Storage::disk('local')->put(, 'Contents');
-        return "test en cour // echec";
+        $image = $request->get('image');
+        $exploded = explode(".", $image);
+
+        return $exploded;
 
         return new FruitsResource($addConfiture);
     }
@@ -209,11 +205,5 @@ class ConfitureController extends Controller
             $fruits = FruitsModel::where('nom', 'like', '%' . $query . '%')->get();
             return response()->json($fruits);
         }
-    }
-
-    public function getNewConfiture()
-    {
-        $newConfiture = ConfituresModel::orderBy('date', 'desc')->take(1)->get();
-        return ConfituresResource::collection($newConfiture);
     }
 }

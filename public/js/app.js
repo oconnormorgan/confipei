@@ -2020,15 +2020,77 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      confitures: [],
+      confituresListe: [],
+      fruitsListe: [],
+      fruits: [],
+      search: null
+    };
+  },
+  watch: {
+    search: function search(val) {
+      var _this = this;
+
+      // event autocomplete
+      // Voir quand il y a un changement
+      // in_array en php pour selectionner toutes les confitures possedant les fruits
+      if (val && val.length > 2) {
+        this.fruitsListe.nom = val;
+        axios.get('/api/fruits', {
+          params: {
+            query: val
+          }
+        }).then(function (_ref) {
+          var data = _ref.data;
+          data.forEach(function (data) {
+            _this.fruitsListe.push(data);
+
+            console.log(_this.fruitsListe);
+          });
+        });
+      }
+    }
+  },
   computed: {
     username: function username() {
       // We will see what `params` is shortly
       return this.$route.params.username;
+    },
+    intitule: function intitule() {
+      return "Intitule de la confiture";
+    },
+    prix: function prix() {
+      return "prix de la confiture";
     }
+  },
+  created: function created() {
+    this.initialize();
   },
   methods: {
     goBack: function goBack() {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
+    },
+    initialize: function initialize() {
+      var _this2 = this;
+
+      axios.get('/api/liste').then(function (_ref2) {
+        var data = _ref2.data;
+        return data.data.forEach(function (confiture) {
+          _this2.confitures.push(confiture);
+        });
+      }, this.confituresListe = this.confitures)["catch"]();
+    },
+    displayFruits: function displayFruits(items) {
+      var fruits = [];
+      items.forEach(function (item) {
+        fruits.push(item.nom);
+      });
+      return fruits.join(', ');
+    },
+    filterConfiture: function filterConfiture(item) {
+      if (_.isEmpty(this.fruits)) {} else {}
     }
   }
 });
@@ -2070,7 +2132,7 @@ __webpack_require__.r(__webpack_exports__);
       fruits: [],
       search: null,
       show: false,
-      document: document
+      image: []
     };
   },
   watch: {
@@ -2108,7 +2170,7 @@ __webpack_require__.r(__webpack_exports__);
         id_producteur: this.confiture.producteur,
         fruits: this.confiture.fruits,
         id: this.confiture.id == '' ? '' : this.confiture.id,
-        document: this.confiture.document
+        image: this.image
       }).then(function (data) {
         console.log(data);
       });
@@ -2130,7 +2192,20 @@ __webpack_require__.r(__webpack_exports__);
       this.prix = this.confiture.prix;
       this.producteur = this.confiture.producteur;
       this.fruitsListe = this.confiture.fruits;
-      this.document = this.confiture.document, _.merge(this.fruits, this.fruitsListe);
+      this.image = this.confiture.image;
+
+      _.merge(this.fruits, this.fruitsListe);
+    },
+    //pour image
+    onFileChange: function onFileChange(file) {
+      var _this3 = this;
+
+      this.image = new Image();
+      var reader = new FileReader();
+
+      reader.onload = function (file) {
+        _this3.image = file;
+      };
     }
   }
 });
@@ -44715,7 +44790,121 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", [_c("H1", [_vm._v("Toto est à l'accueil")])], 1)
+      _c(
+        "div",
+        [
+          _c("v-row", [_c("H1", [_vm._v("Liste des confitures :")])], 1),
+          _vm._v(" "),
+          [
+            _c(
+              "v-container",
+              { attrs: { fluid: "" } },
+              [
+                [
+                  _c(
+                    "v-row",
+                    [
+                      _c(
+                        "v-col",
+                        { attrs: { cols: "12" } },
+                        [
+                          _c("v-autocomplete", {
+                            attrs: {
+                              items: _vm.fruitsListe,
+                              "search-input": _vm.search,
+                              "item-text": "nom",
+                              label: "Recherche par fruits",
+                              color: "black",
+                              "prepend-icon": "mdi-search",
+                              "return-object": "",
+                              "cache-items": "",
+                              "hide-no-data": "",
+                              multiple: ""
+                            },
+                            on: {
+                              "update:searchInput": function($event) {
+                                _vm.search = $event
+                              },
+                              "update:search-input": function($event) {
+                                _vm.search = $event
+                              },
+                              change: _vm.filterConfiture
+                            },
+                            model: {
+                              value: _vm.fruits,
+                              callback: function($$v) {
+                                _vm.fruits = $$v
+                              },
+                              expression: "fruits"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                _vm._v(" "),
+                [
+                  _c(
+                    "v-row",
+                    [
+                      _vm._l(_vm.confituresListe, function(confiture, key) {
+                        return _c(
+                          "v-card",
+                          {
+                            key: key,
+                            staticClass: "mx-auto mt-4",
+                            attrs: { "max-width": "250" }
+                          },
+                          [
+                            _c(
+                              "v-img",
+                              {
+                                staticClass: "white--text align-end",
+                                attrs: { src: confiture.image.image }
+                              },
+                              [
+                                _c("v-card-title", [
+                                  _vm._v(_vm._s(confiture.intitule))
+                                ])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-card-subtitle", { staticClass: "pb-0" }, [
+                              _vm._v("Prix : " + _vm._s(confiture.prix) + " €")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "v-card-text",
+                              { staticClass: "text--primary mt-1" },
+                              [
+                                _c("small", [_vm._v("Liste des fruits")]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._v(
+                                    _vm._s(_vm.displayFruits(confiture.fruits))
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]
+              ],
+              2
+            )
+          ]
+        ],
+        2
+      )
     ])
   ])
 }
@@ -44939,65 +45128,19 @@ var render = function() {
                         { attrs: { cols: "12" } },
                         [
                           [
-                            _c("v-file-input", {
-                              attrs: {
-                                color: "deep-purple accent-4",
-                                counter: "",
-                                label: "Document",
-                                placeholder: "Selectionner votre document",
-                                "prepend-icon": "mdi-paperclip",
-                                outlined: ""
-                              },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "selection",
-                                  fn: function(ref) {
-                                    var index = ref.index
-                                    var text = ref.text
-                                    return [
-                                      index < 2
-                                        ? _c(
-                                            "v-chip",
-                                            {
-                                              attrs: {
-                                                color: "deep-purple accent-4",
-                                                dark: "",
-                                                label: "",
-                                                small: ""
-                                              }
-                                            },
-                                            [_vm._v(_vm._s(text))]
-                                          )
-                                        : index === 2
-                                        ? _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "overline grey--text text--darken-3 mx-2"
-                                            },
-                                            [
-                                              _vm._v(
-                                                "+" +
-                                                  _vm._s(
-                                                    _vm.documents.length - 2
-                                                  ) +
-                                                  " File(s)"
-                                              )
-                                            ]
-                                          )
-                                        : _vm._e()
-                                    ]
-                                  }
+                            [
+                              _c("v-file-input", {
+                                attrs: { label: "File input" },
+                                on: { change: _vm.onFileChange },
+                                model: {
+                                  value: _vm.image,
+                                  callback: function($$v) {
+                                    _vm.image = $$v
+                                  },
+                                  expression: "image"
                                 }
-                              ]),
-                              model: {
-                                value: _vm.confiture.document,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.confiture, "document", $$v)
-                                },
-                                expression: "confiture.document"
-                              }
-                            })
+                              })
+                            ]
                           ]
                         ],
                         2
@@ -45074,11 +45217,7 @@ var render = function() {
       _vm._v(" "),
       _c("v-container", [_c("navbar")], 1),
       _vm._v(" "),
-      _c(
-        "v-content",
-        [_c("v-container", { attrs: { fluid: "" } }, [_c("router-view")], 1)],
-        1
-      ),
+      _c("v-content", [_c("v-container", [_c("router-view")], 1)], 1),
       _vm._v(" "),
       _c("Footer")
     ],

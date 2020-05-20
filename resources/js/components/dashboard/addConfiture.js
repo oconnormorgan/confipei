@@ -23,7 +23,7 @@ export default {
             fruits: [],
             search: null,
             show: false,
-            document,
+            image: [],
         }
     },
     watch: {
@@ -61,7 +61,7 @@ export default {
                     id_producteur: this.confiture.producteur,
                     fruits: this.confiture.fruits,
                     id: this.confiture.id == '' ? '' : this.confiture.id,
-                    document: this.confiture.document,
+                    image: this.image,
                 })
                 .then((data) => {
                     console.log(data)
@@ -84,8 +84,18 @@ export default {
             this.prix = this.confiture.prix
             this.producteur = this.confiture.producteur
             this.fruitsListe = this.confiture.fruits
-            this.document = this.confiture.document,
+            this.image = this.confiture.image
             _.merge(this.fruits, this.fruitsListe)
+        },
+
+        //pour image
+        onFileChange(file) {
+            this.image = new Image;
+            let reader = new FileReader;
+
+            reader.onload = (file) => {
+                this.image = file;
+            };
         },
     },
 }
