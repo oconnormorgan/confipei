@@ -1,14 +1,33 @@
+import axios from 'axios';
+
 export default {
-    data: () => ({
-        confitures: [],
-    }),
-    computed: {},
+    data() {
+        return {
+            headers: [{
+                    text: 'Producteur',
+                    align: 'start',
+                    value: 'nom'
+                },
+            ],
+            datas: [],
+            confitures: [],
+        }
+    },
     created() {
         this.initialize();
     },
     methods: {
         initialize() {
-            //recuper le producteur id et affiche les produit correspondant
+            axios.get('/api/producteurs')
+                .then(({
+                        data
+                    }) =>
+                    data.data.forEach(data => {
+                        this.datas.push(data);
+                    })
+                )
+                .catch();
         },
-    }
+    },
+
 }

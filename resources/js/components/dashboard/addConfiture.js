@@ -64,8 +64,6 @@ export default {
                     image: this.image,
                 })
                 .then((data) => {
-                    console.log('data Axios')
-                    console.log(data)
                 })
             this.show = false;
         },
@@ -96,8 +94,6 @@ export default {
 
             reader.onload = (file) => {
                 this.image = file.target.result;
-                console.log('image onFileChange')
-                console.log(this.image);
             };
             reader.readAsDataURL(file);
         },

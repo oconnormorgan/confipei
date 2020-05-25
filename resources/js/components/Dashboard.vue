@@ -17,7 +17,8 @@
           <template v-slot:item.producteur="{ item }">{{ item.producteur.nom }}</template>
           <template v-slot:item.fruits="{ item }">{{ displayFruits(item.fruits) }}</template>
           <template v-slot:item.image="{ item }">
-            <v-img :src="item.image" aspect-ratio="1.7"></v-img>
+            <v-img v-if="item.image" :src="item.image" aspect-ratio="1.7"></v-img>
+            <div v-else>no data</div>
           </template>
           <template v-slot:item.actions="{ item }">
             <addConfiture :confiture="item" :update="true" />

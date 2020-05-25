@@ -25,7 +25,6 @@ export default {
                     }) => {
                         data.forEach(data => {
                             this.fruitsListe.push(data);
-                            console.log(this.fruitsListe);
                         })
                     });
             }
