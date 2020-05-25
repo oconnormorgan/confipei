@@ -59,13 +59,18 @@
                 </template>
               </template>
             </v-col>
+            <v-col cols="12" v-if="imageAff">
+              <template>
+                <v-img :src="imageAff"></v-img>
+              </template>
+            </v-col>
           </v-row>
         </v-container>
       </v-card-text>
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text>Annuler</v-btn>
+        <v-btn color="blue darken-1" text @click="close">Annuler</v-btn>
         <v-btn color="blue darken-1" text @click="save">Sauvegarder</v-btn>
       </v-card-actions>
     </v-card>

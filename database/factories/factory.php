@@ -15,15 +15,12 @@ use Illuminate\Support\Facades\DB;
 
 $factory->define(UsersModel::class, function (Faker $faker) {
 
-    $id_roles = RoleModel::all();
-    $id_role = $faker->randomElement($id_roles)->id;
-    
     return [
         'nom' => $faker->firstName(),
         'prenom' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'password' => $faker->password,
-        'id_role' => $id_role,
+        'id_role' => '1',
     ];
 });
 

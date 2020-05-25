@@ -35,8 +35,6 @@ export default {
             ],
             datas: [],
             confitures: [],
-            image: '',
-            showConfitureForm: false
         }
     },
     created() {

@@ -1980,9 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
         value: 'actions'
       }],
       datas: [],
-      confitures: [],
-      image: '',
-      showConfitureForm: false
+      confitures: []
     };
   },
   created: function created() {
@@ -2190,7 +2188,8 @@ __webpack_require__.r(__webpack_exports__);
           intitule: '',
           prix: '',
           producteur: '',
-          fruits: []
+          fruits: [],
+          image: ''
         };
       }
     },
@@ -2204,7 +2203,7 @@ __webpack_require__.r(__webpack_exports__);
       fruits: [],
       search: null,
       show: false,
-      image: ''
+      imageAff: null
     };
   },
   watch: {
@@ -2242,7 +2241,7 @@ __webpack_require__.r(__webpack_exports__);
         id_producteur: this.confiture.producteur,
         fruits: this.confiture.fruits,
         id: this.confiture.id == '' ? '' : this.confiture.id,
-        image: this.image
+        image: this.confiture.image
       }).then(function (data) {});
       this.show = false;
     },
@@ -2262,7 +2261,7 @@ __webpack_require__.r(__webpack_exports__);
       this.prix = this.confiture.prix;
       this.producteur = this.confiture.producteur;
       this.fruitsListe = this.confiture.fruits;
-      this.image = this.image;
+      this.image = this.confiture.image;
 
       _.merge(this.fruits, this.fruitsListe);
     },
@@ -2272,12 +2271,17 @@ __webpack_require__.r(__webpack_exports__);
 
       this.image = new Image();
       var reader = new FileReader();
+      this.imageAff = null;
 
       reader.onload = function (file) {
-        _this3.image = file.target.result;
+        _this3.confiture.image = file.target.result;
+        _this3.imageAff = file.target.result;
       };
 
       reader.readAsDataURL(file);
+    },
+    close: function close() {
+      this.show = false;
     }
   }
 });
@@ -45276,7 +45280,16 @@ var render = function() {
                           ]
                         ],
                         2
-                      )
+                      ),
+                      _vm._v(" "),
+                      _vm.imageAff
+                        ? _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [[_c("v-img", { attrs: { src: _vm.imageAff } })]],
+                            2
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -45292,9 +45305,14 @@ var render = function() {
             [
               _c("v-spacer"),
               _vm._v(" "),
-              _c("v-btn", { attrs: { color: "blue darken-1", text: "" } }, [
-                _vm._v("Annuler")
-              ]),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "blue darken-1", text: "" },
+                  on: { click: _vm.close }
+                },
+                [_vm._v("Annuler")]
+              ),
               _vm._v(" "),
               _c(
                 "v-btn",
