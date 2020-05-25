@@ -15,6 +15,7 @@ class ModifyConfitureTable extends Migration
     {
         Schema::table('confiture_table', function (Blueprint $table) {
             $table->unsignedBigInteger('id_producteur');
+            $table->string('image')->nullable();
         });
 
         Schema::table('confiture_table', function (Blueprint $table) {

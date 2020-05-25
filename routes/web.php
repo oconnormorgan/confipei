@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'AccueilController@index');
+
+Route::get('/storage/images/{filename}', 'imageController@getImage');

@@ -23,7 +23,7 @@ export default {
             fruits: [],
             search: null,
             show: false,
-            image: [],
+            image: '',
         }
     },
     watch: {
@@ -64,6 +64,7 @@ export default {
                     image: this.image,
                 })
                 .then((data) => {
+                    console.log('data Axios')
                     console.log(data)
                 })
             this.show = false;
@@ -84,7 +85,7 @@ export default {
             this.prix = this.confiture.prix
             this.producteur = this.confiture.producteur
             this.fruitsListe = this.confiture.fruits
-            this.image = this.confiture.image
+            this.image = this.image
             _.merge(this.fruits, this.fruitsListe)
         },
 
@@ -94,8 +95,11 @@ export default {
             let reader = new FileReader;
 
             reader.onload = (file) => {
-                this.image = file;
+                this.image = file.target.result;
+                console.log('image onFileChange')
+                console.log(this.image);
             };
+            reader.readAsDataURL(file);
         },
     },
 }

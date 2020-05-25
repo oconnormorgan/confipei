@@ -55,7 +55,7 @@
             <v-col cols="12">
               <template>
                 <template>
-                  <v-file-input v-model="image" label="File input" v-on:change="onFileChange"></v-file-input>
+                  <v-file-input v-on:change="onFileChange" label="File input"></v-file-input>
                 </template>
               </template>
             </v-col>

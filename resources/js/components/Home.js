@@ -61,7 +61,6 @@ export default {
                     this.confituresListe = this.confitures,
                 )
                 .catch();
-
         },
         displayFruits(items) {
             let fruits = [];
@@ -70,11 +69,29 @@ export default {
             })
             return fruits.join(', ');
         },
-        filterConfiture(item) {
-            if (_.isEmpty(this.fruits)) {
-                
-            } else {
+        filterConfiture() {
+            // effacer la liste affiché
+            this.confituresListe = [];
+            let _confituresListe = [];
 
+            if (_.isEmpty(this.fruits)) { // si vide fait aparaitre toutes les données
+                this.confituresListe = this.confitures
+            } else {
+                // verifié si l'id du fruit est présent dans les confitures.
+                this.confitures.forEach(confiture => { //on recuper toutes les confitures
+                    if (confiture) {
+                        let _confiture = confiture
+                        confiture.fruits.forEach(_fruit => { // on recuper tous les fruits des confitures
+                            
+                            if(_.includes(this.fruits, _fruit.nom)) {
+                                _confituresListe[_confiture.id] = _confiture
+                            }
+                        })
+                    }
+                })
+                _confituresListe.forEach(_confiture => {
+                    this.confituresListe.push(_confiture)
+                })
             }
         }
     }

@@ -41,10 +41,10 @@
                     :search-input.sync="search"
                     v-model="fruits"
                     item-text="nom"
+                    item-value="nom"
                     label="Recherche par fruits"
                     color="black"
                     prepend-icon="mdi-search"
-                    return-object
                     cache-items
                     hide-no-data
                     multiple
@@ -63,7 +63,7 @@
                     v-for="(confiture,key) in confituresListe"
                     :key="key"
                   >
-                    <v-img class="white--text align-end" :src="confiture.image.image">
+                    <v-img class="white--text align-end" :src="confiture.image">
                       <v-card-title>{{ confiture.intitule }}</v-card-title>
                     </v-img>
 

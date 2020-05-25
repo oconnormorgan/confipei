@@ -13,7 +13,7 @@ use App\UsersModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use LengthException;
+use Illuminate\Support\Str;
 
 class ConfitureController extends Controller
 {
@@ -128,24 +128,31 @@ class ConfitureController extends Controller
             $addConfiture->fruits()->attach($toAttach);
         }
 
-        //Upload
+        $img = $request->get('image');
 
-        //si on recupere l'element
-        //  on recupere l'extension
-        //  on lui atribue un nouveauNom
-        //  on l'ajoute au dossier nouveauNom + extension
-        //sinon
-        //  ne connais pas le image
+        $exploded = explode(",", $img);
 
-        $name = $request->file('image')->getClientOriginalName();
-        return $name;
+        if (str::contains($exploded[0], 'gif')) {
+            $ext = 'gif';
+        } else if (str::contains($exploded[0], 'png')) {
+            $ext = 'png';
+        } else {
+            $ext = 'jpg';
+        }
 
-        $image = $request->get('image');
-        $exploded = explode(".", $image);
+        $decode = base64_decode($exploded[1]);
+        $filename = str::random() . "." . $ext;
 
-        return $exploded;
+        $path = storage_path() . "/images/" . $filename;
 
-        return new FruitsResource($addConfiture);
+        file_put_contents($path, $decode);
+
+        if (file_put_contents($filename, $decode)) {
+            $addConfiture->image = $filename;
+            $addConfiture->save();
+        }
+
+        return new FruitsResource($confiture);
     }
 
     /**

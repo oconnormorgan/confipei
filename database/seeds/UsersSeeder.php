@@ -18,15 +18,25 @@ class UsersSeeder extends Seeder
             'intitule' => 'clients',
         ]);
         DB::table('role_users_table')->insert([
+            'intitule' => 'producteur',
+        ]);
+        DB::table('role_users_table')->insert([
             'intitule' => 'admin',
         ]);
 
         DB::table('users_table')->insert([
-            'nom' => 'admin',
+            'nom' => 'producteur',
             'prenom' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'producteur@gmail.com',
             'password' => bcrypt('123456789'),
             'id_role' => 2,
+        ]);
+        DB::table('users_table')->insert([
+            'nom' => 'admin',
+            'prenom' => Str::random(10),
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => 3,
         ]);
 
         factory(App\UsersModel::class, 5)

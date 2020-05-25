@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from './components/Home.vue';
+import Producteur from './components/Producteur.vue';
 import Dashboard from './components/Dashboard.vue'
 import Login from './login/Login.vue'
 import { Role } from '../js/_helpers/role.js';
@@ -23,6 +24,12 @@ const router = new VueRouter({
             name: 'login',
             component: Login,
             meta: { authorize: [] }
+        },
+        {
+            path: '/producteur',
+            name: 'producteur',
+            component: Producteur,
+            meta: { authorize: [Role.Producteur] }
         },
         {
             path: '/dashboard',

@@ -15,7 +15,6 @@ class ConfituresResource extends JsonResource
     public function toArray($request)
     {
         $producteur =  new ProducteursResource($this->producteur);
-        $image =  new ImagesResource($this->image);
 
         return [
             'id' => $this->id,
@@ -24,7 +23,7 @@ class ConfituresResource extends JsonResource
             'producteur' => $producteur,
             'recompense' => $this->recompenses,
             'fruits' => $this->fruits,
-            'image' => $image,
+            'image' => $this->image,
             // 'fruits' => FruitsResource::collection($this->whenLoaded('fruits'))
         ];
     }

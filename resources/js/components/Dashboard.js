@@ -25,12 +25,17 @@ export default {
                     value: 'fruits',
                 },
                 {
+                    text: 'Image',
+                    value: 'image',
+                },
+                {
                     text: 'Actions',
                     value: 'actions',
                 },
             ],
             datas: [],
             confitures: [],
+            image: '',
             showConfitureForm: false
         }
     },
