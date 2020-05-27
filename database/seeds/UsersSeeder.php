@@ -15,13 +15,13 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('role_users_table')->insert([
-            'intitule' => 'clients',
+            'intitule' => 'Clients',
         ]);
         DB::table('role_users_table')->insert([
-            'intitule' => 'producteur',
+            'intitule' => 'Producteur',
         ]);
         DB::table('role_users_table')->insert([
-            'intitule' => 'admin',
+            'intitule' => 'Admin',
         ]);
 
         DB::table('users_table')->insert([

@@ -24,7 +24,10 @@ class ConfitureController extends Controller
      */
     public function index()
     {
-        $confitures = ConfituresModel::all();
+        $confitures = ConfituresModel::with([
+            'recompenses',
+            'fruits',
+        ])->get();
         return ConfituresResource::collection($confitures);
     }
 
@@ -84,54 +87,61 @@ class ConfitureController extends Controller
             $addConfiture->producteur()->associate($producteur);
         }
 
-        if (isset($confiture->image)) {
-            if (!empty($data['image'])) {
-                $img = $request->get('image');
+        $addConfiture->save();
 
-                $exploded = explode(",", $img);
-
-                if (str::contains($exploded[0], 'gif')) {
-                    $ext = 'gif';
-                } elseif (str::contains($exploded[0], 'png')) {
-                    $ext = 'png';
-                } else {
-                    $ext = 'jpg';
-                }
-
-                $decode = base64_decode($exploded[1]);
-                $filename = str::random() . "." . $ext;
-
-                $path = storage_path() . "/images/" . $filename;
-
-                file_put_contents($path, $decode);
-
-                if (file_put_contents($filename, $decode)) {
-                    $addConfiture->image = $filename;
-                }
-            }
+        if (empty($data['image'])) {
+            return "Toto n'as pas d'image";
         } else {
-            if (!empty($data['image'])) {
-                $img = $request->get('image');
-
-                $exploded = explode(",", $img);
-
-                if (str::contains($exploded[0], 'gif')) {
-                    $ext = 'gif';
-                } elseif (str::contains($exploded[0], 'png')) {
-                    $ext = 'png';
+            if (isset($confiture->image)) {
+                if (!empty($data['image'])) {
+                    $img = $request->get('image');
+    
+                    $exploded = explode(",", $img);
+    
+                    if (str::contains($exploded[0], 'gif')) {
+                        $ext = 'gif';
+                    } elseif (str::contains($exploded[0], 'png')) {
+                        $ext = 'png';
+                    } else {
+                        $ext = 'jpg';
+                    }
+                    $decode = base64_decode($exploded[1]);
+    
+                    $filename = str::random() . "." . $ext;
+    
+                    $path = storage_path() . "/images/" . $filename;
+    
+                    file_put_contents($path, $decode);
+    
+                    if (file_put_contents($filename, $decode)) {
+                        $addConfiture->image = $filename;
+                    }
                 } else {
-                    $ext = 'jpg';
                 }
-
-                $decode = base64_decode($exploded[1]);
-                $filename = str::random() . "." . $ext;
-
-                $path = storage_path() . "/images/" . $filename;
-
-                file_put_contents($path, $decode);
-
-                if (file_put_contents($filename, $decode)) {
-                    $addConfiture->image = $filename;
+            } else {
+                if (!empty($data['image'])) {
+                    $img = $request->get('image');
+    
+                    $exploded = explode(",", $img);
+    
+                    if (str::contains($exploded[0], 'gif')) {
+                        $ext = 'gif';
+                    } elseif (str::contains($exploded[0], 'png')) {
+                        $ext = 'png';
+                    } else {
+                        $ext = 'jpg';
+                    }
+    
+                    $decode = base64_decode($exploded[1]);
+                    $filename = str::random() . "." . $ext;
+    
+                    $path = storage_path() . "/images/" . $filename;
+    
+                    file_put_contents($path, $decode);
+    
+                    if (file_put_contents($filename, $decode)) {
+                        $addConfiture->image = $filename;
+                    }
                 }
             }
         }
@@ -230,7 +240,7 @@ class ConfitureController extends Controller
 
     public function getProducteurs()
     {
-        $producteurs = ProducteursModel::all();
+        $producteurs = ProducteursModel::find(1)->get();
         return ProducteursResource::collection($producteurs);
     }
     public function getFruits(Request $request)

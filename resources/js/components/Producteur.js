@@ -4,9 +4,9 @@ export default {
     data() {
         return {
             headers: [{
-                    text: 'Producteur',
+                    text: 'Confiture',
                     align: 'start',
-                    value: 'nom'
+                    value: 'confiture'
                 },
             ],
             datas: [],
@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         initialize() {
-            axios.get('/api/producteurs')
+            axios.get('')
                 .then(({
                         data
                     }) =>

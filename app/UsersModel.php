@@ -35,6 +35,9 @@ class UsersModel extends Authenticatable
     public function role(){
         return $this->belongsTo(RoleModel::class, 'id_role');
     }
+    public function producteur(){
+        return $this->hasMany(ProducteursModel::class, 'id_user');
+    }
 
     public function commandes(){
         return $this->belongsToMany(CommandesModel::class, 'commande_has_confiture', 'id_user', 'id_commande');

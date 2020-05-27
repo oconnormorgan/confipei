@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { apiServices } from '../../_services/api.services';
 
 export default {
     props: {
@@ -31,10 +31,8 @@ export default {
         search(val) {
             if (val && val.length > 2) {
                 this.fruits.name = val;
-                axios.get("/api/fruits", {
-                        params: {
+                apiServices.get("/api/fruits", {
                             query: val
-                        }
                     })
                     .then(({
                         data
@@ -56,7 +54,7 @@ export default {
     },
     methods: {
         save() {
-            axios.post('/api/create', {
+            apiServices.post('/api/create', {
                     intitule: this.confiture.intitule,
                     prix: this.confiture.prix,
                     id_producteur: this.confiture.producteur,
@@ -69,7 +67,7 @@ export default {
             this.show = false;
         },
         getProducteurs() {
-            axios.get("/api/producteurs")
+            apiServices.get("/api/producteurs")
                 .then(({
                         data
                     }) =>

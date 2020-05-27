@@ -84,4 +84,12 @@ class ProducteursController extends Controller
     {
         //
     }
+
+    public function getConfitures($id) 
+    {
+        return 'toto';
+
+        $producteurs = ProducteursModel::chere('id', '=', $id);
+        return ProducteursResource::collection($producteurs);
+    }
 }

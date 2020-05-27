@@ -18,15 +18,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->group(function() {
-
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'roles:Admin|Producteur'], function () {
+        Route::post('/create', 'ConfitureController@store');
+    });
 });
 
 Route::post('/login', 'AuthController@login');
-Route::get('/logout', 'AuthController@logout')->middleware('auth');
+Route::get('/logout', 'AuthController@logout');
+
 
 Route::get('/liste', 'ConfitureController@index');
-Route::post('/create', 'ConfitureController@store');
+Route::get('/test, ProducteursController@getConfitures');
+
 Route::post('/confitures/{id}', 'ConfituresController@update')->where('id', "[0-9]+");
 Route::get('/producteurs', 'ConfitureController@getProducteurs');
 Route::get('/fruits', 'ConfitureController@getFruits');

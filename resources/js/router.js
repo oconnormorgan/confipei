@@ -5,7 +5,7 @@ import Home from './components/Home.vue';
 import Producteur from './components/Producteur.vue';
 import Dashboard from './components/Dashboard.vue'
 import Login from './login/Login.vue'
-import { Role } from '../js/_helpers/role.js';
+import { Role } from './_helpers/role.js';
 import { authenticationService } from './_services/authentication.service'
 
 
@@ -23,22 +23,18 @@ const router = new VueRouter({
             path: '/login',
             name: 'login',
             component: Login,
-            meta: { authorize: [] }
         },
         {
             path: '/producteur',
             name: 'producteur',
             component: Producteur,
-            meta: { authorize: [Role.Producteur] }
         },
         {
             path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,
-            meta: { authorize: [Role.admin] }
+            meta: { authorize: [Role.Admin] }
         },
-        // otherwise redirect to home
-        { path: '*', redirect: '/' }
     ]
 })
 
@@ -55,13 +51,16 @@ router.beforeEach((to, from, next) => {
             // not logged in so redirect to login page with the return url
             return next({ path: "/login", query: { returnUrl: to.path } });
         }
+
         // check if route is restricted by role
         if (authorize.length && !authorize.includes(currentUser.role.name)) {
             // role not authorised so redirect to home page
-            return next();
+            return next({ path: "/" });
         }
+
     }
-    next();
+
+    return next();
 });
 
 export default router;

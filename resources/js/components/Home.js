@@ -8,11 +8,6 @@ export default {
     }),
     watch: {
         search(val) {
-
-            // event autocomplete
-            // Voir quand il y a un changement
-            // in_array en php pour selectionner toutes les confitures possedant les fruits
-
             if (val && val.length > 2) {
                 this.fruitsListe.nom = val;
                 axios.get('/api/fruits', {
@@ -31,10 +26,6 @@ export default {
         }
     },
     computed: {
-        username() {
-            // We will see what `params` is shortly
-            return this.$route.params.username
-        },
         intitule() {
             return "Intitule de la confiture"
         },
@@ -81,8 +72,8 @@ export default {
                     if (confiture) {
                         let _confiture = confiture
                         confiture.fruits.forEach(_fruit => { // on recuper tous les fruits des confitures
-                            
-                            if(_.includes(this.fruits, _fruit.nom)) {
+
+                            if (_.includes(this.fruits, _fruit.nom)) {
                                 _confituresListe[_confiture.id] = _confiture
                             }
                         })

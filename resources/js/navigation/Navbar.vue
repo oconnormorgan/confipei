@@ -9,8 +9,23 @@
           <v-btn class="padding d-flex" text to="/producteur">Producteur</v-btn>
           <v-btn class="padding d-flex" text to="/dashboard">Dashboard</v-btn>
           <v-btn class="padding d-flex" text to="/login">Login</v-btn>
+          <v-btn class="padding d-flex" text @click="logout">deconnexion</v-btn>
         </div>
       </v-card>
     </v-col>
   </v-row>
 </template>
+
+<script>
+import { authenticationService } from "../_services/authentication.service";
+import { Role } from "../_helpers/role";
+import router from "../router";
+export default {
+  methods: {
+    logout() {
+      authenticationService.logout();
+      router.push("/login");
+    }
+  }
+};
+</script>
