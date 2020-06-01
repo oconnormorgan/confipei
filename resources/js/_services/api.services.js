@@ -7,19 +7,19 @@ import axios from "axios"
 import { authenticationService } from "./authentication.service"
 
 export const apiServices = {
-    get(url, data = {}) {
+    get(url, params = {}) {
         return axios({
             method: 'get',
             url: url,
-            params: data,
+            params: params,
             headers: headers(),
         })
     },
-    post(url, data = {}) {
+    post(url, body, params = {}) {
         return axios({
             method: 'post',
             url: url,
-            params: data,
+            params: JSON.stringify(body),
             headers: headers(),
         })
     }
@@ -27,11 +27,11 @@ export const apiServices = {
 
 function headers() {
     const currentUser = authenticationService.currentUserValue || {};
-    const authHeader = currentUser.token ? {
-        'Authorization': 'Bearer ' + currentUser.token
-    } : {}
+    const authHeader = currentUser.token ? { 'Authorization': 'Bearer ' + currentUser.token } : {}
     return {
         ...authHeader,
         'Content-Type': 'application/json'
-    }
+    };
+         
+    
 }

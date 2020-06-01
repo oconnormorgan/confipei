@@ -23,11 +23,10 @@ class AuthController extends Controller
         //
         $accessToken = Auth::user()->createToken('authToken')->accessToken; 
 
-        return new UserResource(Auth::user(), $accessToken);
+        return new UserResource(Auth::user($accessToken), $accessToken);
     }
 
     public function logout() {
-        Log::debug('Logout');
         $accessToken = Auth::user()->token();
 
         $accessToken->revoke();

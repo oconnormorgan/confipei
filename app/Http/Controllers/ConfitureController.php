@@ -251,4 +251,11 @@ class ConfitureController extends Controller
             return response()->json($fruits);
         }
     }
+    public function getOfProducteur(Request $request) {
+        $user = $request->user();
+        $confitures = confituresModel::with(['fruits'])->whereHas('producteur', function (Builder $query) use ($user) {
+            $query->where('id_user', '=', $user->id);
+        })->get();
+        return $confitures;
+    }
 }

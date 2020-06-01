@@ -2,10 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from './components/Home.vue';
-import Producteur from './components/Producteur.vue';
+import DashboardProducteur from './components/DashboardProducteur.vue';
 import Dashboard from './components/Dashboard.vue'
 import Login from './login/Login.vue'
-import { Role } from './_helpers/role.js';
+import { Role } from './_helpers/role';
 import { authenticationService } from './_services/authentication.service'
 
 
@@ -18,16 +18,13 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home,
+            meta: { authorize: [] }
         },
         {
             path: '/login',
             name: 'login',
             component: Login,
-        },
-        {
-            path: '/producteur',
-            name: 'producteur',
-            component: Producteur,
+            meta: { authorize: [] }
         },
         {
             path: '/dashboard',
@@ -35,32 +32,38 @@ const router = new VueRouter({
             component: Dashboard,
             meta: { authorize: [Role.Admin] }
         },
+        {
+            path: '/dashboardproducteur',
+            name: 'dashboardproducteur',
+            component: DashboardProducteur,
+            meta: { authorize: [Role.Producteur] }
+        },
     ]
 })
 
-router.beforeEach((to, from, next) => {
+// router.beforeEach((to, from, next) => {
 
-    // redirect to login page if not logged in and trying to access a restricted page
-    const { authorize } = to.meta;
+//     // redirect to login page if not logged in and trying to access a restricted page
+//     const { authorize } = to.meta;
 
-    if (authorize && !_.isEmpty(authorize)) {
+//     if (authorize && !_.isEmpty(authorize)) {
 
-        const currentUser = authenticationService.currentUserValue;
+//         const currentUser = authenticationService.currentUserValue;
+//         // console.log(authenticationService.currentUserValue);
+//         if (!currentUser) {
+//             // not logged in so redirect to login page with the return url
+//             return next({ path: "/login", query: { returnUrl: to.path } });
+//         }
 
-        if (!currentUser) {
-            // not logged in so redirect to login page with the return url
-            return next({ path: "/login", query: { returnUrl: to.path } });
-        }
+//         // check if route is restricted by role
+//         if (authorize.length && !authorize.includes(currentUser.role.intitule)) {
+//             // role not authorised so redirect to home page
+//             return next({ path: "/" });
+//         }
 
-        // check if route is restricted by role
-        if (authorize.length && !authorize.includes(currentUser.role.name)) {
-            // role not authorised so redirect to home page
-            return next({ path: "/" });
-        }
+//     }
 
-    }
-
-    return next();
-});
+//     return next();
+// });
 
 export default router;

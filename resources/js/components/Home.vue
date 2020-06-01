@@ -3,7 +3,9 @@
     <div class="row justify-content-center">
       <div>
         <v-row>
-          <H1>Liste des confitures :</H1>
+          <v-col>
+            <H1>Liste des confitures :</H1>
+          </v-col>
         </v-row>
         <template>
           <v-container fluid>
@@ -37,7 +39,11 @@
                     v-for="(confiture,key) in confituresListe"
                     :key="key"
                   >
-                    <v-img v-if="confiture.image" class="white--text align-end" :src="confiture.image">
+                    <v-img
+                      v-if="confiture.image"
+                      class="white--text align-end"
+                      :src="confiture.image"
+                    >
                       <v-card-title>{{ confiture.intitule }}</v-card-title>
                     </v-img>
                     <v-card-title v-else>{{ confiture.intitule }}</v-card-title>
@@ -47,6 +53,9 @@
                     <v-card-text class="text--primary mt-1">
                       <small>Liste des fruits</small>
                       <div>{{ displayFruits(confiture.fruits) }}</div>
+                    </v-card-text>
+                    <v-card-text>
+                      <addPanier :confiture="confiture" />
                     </v-card-text>
                   </v-card>
                 </template>

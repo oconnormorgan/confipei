@@ -13,6 +13,7 @@ window.Vue = require('vue');
 import Route from './router.js';
 import layout from './layout/layout';
 import vuetify from './src/plugins/vuetify.js' // path to vuetify export
+import _ from 'lodash';
 
 Vue.component('layout', require('./layout/layout'));
 

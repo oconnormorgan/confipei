@@ -16,15 +16,15 @@ class CheckRoles
      */
     public function handle($request, Closure $next, $roles)
     {
-        return response()->json(['error' => "TOTO"], 403);
-        $user = $request->user();
-        $role = RoleModel::find($user->id_role);
-        $roles = explode("|", $roles);
+        // $user = $request->user();
+        // // return response()->json(['error' => $user], 403);
 
-        if (!in_array($role->intitule, $roles)) {
-            return response()->json(['error' => "Unauthorized"], 403);
-        }
+        // $role = RoleModel::find($user->id_role);
+        // $roles = explode("|", $roles);
 
-        return $next($request);
+        // if (!in_array($role->intitule, $roles)) {
+        //     return response()->json(['error' => "Unauthorized"], 403);
+        // }
+        // return $next($request);
     }
 }

@@ -1,4 +1,19 @@
+import {
+    apiServices
+} from '../_services/api.services'
+import {
+    authenticationService
+} from "../_services/authentication.service";
+import {
+    Role
+} from "../_helpers/role";
+import axios from "axios";
+import addPanier from './addPanier.vue';
+
 export default {
+    components: {
+        addPanier
+    },
     data: () => ({
         confitures: [],
         confituresListe: [],
@@ -10,10 +25,8 @@ export default {
         search(val) {
             if (val && val.length > 2) {
                 this.fruitsListe.nom = val;
-                axios.get('/api/fruits', {
-                        params: {
-                            query: val
-                        }
+                apiServices.get('/api/fruits', {
+                        query: val
                     })
                     .then(({
                         data
@@ -34,14 +47,27 @@ export default {
         }
     },
     created() {
+        authenticationService.currentUser.subscribe(x => (this.currentUser = x));
+        // this.getUser();
         this.initialize();
     },
     methods: {
+        // getUser() {
+        //     axios.get("/api/user", {
+        //         headers: {
+        //             Authorization: `Bearer ${this.currentUser.token}`
+        //         }
+        //     }).then((data) =>
+        //         console.log(data)
+        //     ).catch((error) =>
+        //         console.log(error)
+        //     );
+        // },
         goBack() {
             window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
         },
         initialize() {
-            axios.get('/api/liste')
+            apiServices.get('/api/liste')
                 .then(({
                         data
                     }) =>

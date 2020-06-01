@@ -6,8 +6,9 @@
         <div class="d-flex flex-row">
           <v-btn class="padding d-flex" text to="/">Home</v-btn>
           <!-- 'to' utilise les component de view -->
-          <v-btn class="padding d-flex" text to="/producteur">Producteur</v-btn>
+          <v-btn class="padding d-flex" text to="/dashboardproducteur">Producteur</v-btn>
           <v-btn class="padding d-flex" text to="/dashboard">Dashboard</v-btn>
+          <Panier />
           <v-btn class="padding d-flex" text to="/login">Login</v-btn>
           <v-btn class="padding d-flex" text @click="logout">deconnexion</v-btn>
         </div>
@@ -20,7 +21,11 @@
 import { authenticationService } from "../_services/authentication.service";
 import { Role } from "../_helpers/role";
 import router from "../router";
+import Panier from '../components/Panier.vue';
 export default {
+  components: {
+        Panier
+    },
   methods: {
     logout() {
       authenticationService.logout();

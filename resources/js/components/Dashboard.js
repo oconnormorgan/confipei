@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { apiServices } from '../_services/api.services'
 import addConfiture from './dashboard/addConfiture.vue';
 
 export default {
@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         initialize() {
-            axios.get('/api/liste')
+            apiServices.get('/api/liste')
                 .then(({
                         data
                     }) =>

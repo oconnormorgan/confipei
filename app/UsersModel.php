@@ -13,7 +13,7 @@ class UsersModel extends Authenticatable
 
     protected $table = 'users_table';
     protected $fillable = [
-        'nom', 'prenom', 'email', 'password', 'id_role'
+        'nom', 'prenom', 'email', 'password'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -32,14 +32,15 @@ class UsersModel extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
+    function roles(){
         return $this->belongsTo(RoleModel::class, 'id_role');
     }
-    public function producteur(){
+    
+    function producteur(){
         return $this->hasMany(ProducteursModel::class, 'id_user');
     }
 
-    public function commandes(){
+    function commandes(){
         return $this->belongsToMany(CommandesModel::class, 'commande_has_confiture', 'id_user', 'id_commande');
     }
 }
