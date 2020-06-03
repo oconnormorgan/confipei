@@ -9,8 +9,10 @@ use App\Http\Resources\FruitsResource;
 use App\Http\Resources\ProducteursResource;
 use App\Http\Resources\UserResource;
 use App\ProducteursModel;
-use App\UsersModel;
+use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -252,10 +254,18 @@ class ConfitureController extends Controller
         }
     }
     public function getOfProducteur(Request $request) {
+
+        Log::debug($request);
+
         $user = $request->user();
-        $confitures = confituresModel::with(['fruits'])->whereHas('producteur', function (Builder $query) use ($user) {
-            $query->where('id_user', '=', $user->id);
+        Log::debug("user dans getOfProducteur");
+        Log::debug($user);
+        $confitures = ConfituresModel::with(['fruits'])->whereHas('producteur', function (Builder $query) use ($user) {
+            $query->where('id_user', '=', $user->id); // j'ai pas l'ID...
         })->get();
+        
+        Log::debug("confitures dans getOfProducteur");
+        log::debug($confitures);
         return $confitures;
     }
 }

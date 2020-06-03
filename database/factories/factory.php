@@ -8,12 +8,12 @@ use App\FruitsModel;
 use App\ProducteursModel;
 use App\RecompensesModel;
 use App\RoleModel;
-use App\UsersModel;
+use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\DB;
 
 
-$factory->define(UsersModel::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
 
     return [
         'nom' => $faker->firstName(),

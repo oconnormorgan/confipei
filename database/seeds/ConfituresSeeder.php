@@ -12,14 +12,12 @@ class ConfituresSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ConfituresModel::class, 5)
+        factory(App\ConfituresModel::class, 13)
                 ->create()
                 ->each(function($u) {
                     $u->recompenses()->saveMany(factory(App\RecompensesModel::class, 2)
                         ->make());
                     $u->fruits()->saveMany(factory(App\FruitsModel::class, 2)
-                        ->make());
-                    $u->commandes()->saveMany(factory(App\CommandesModel::class, 2)
                         ->make());
                     });
     }

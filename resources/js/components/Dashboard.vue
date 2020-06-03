@@ -9,7 +9,7 @@
               <v-toolbar-title>Liste des confitures</v-toolbar-title>
               <v-divider class="mx-4" inset vertical></v-divider>
               <v-spacer></v-spacer>
-              <addConfiture @create="confitures.push($event)" />
+              <addConfiture />
             </v-toolbar>
           </template>
           <template v-slot:item.intitule="{ item }">{{ item.intitule }}</template>

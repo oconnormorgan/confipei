@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-class UsersModel extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
@@ -32,7 +32,7 @@ class UsersModel extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    function roles(){
+    function role(){
         return $this->belongsTo(RoleModel::class, 'id_role');
     }
     

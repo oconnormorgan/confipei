@@ -7,7 +7,7 @@ export default {
     data() {
         return {
             quantites: 0,
-            items: [],
+            itemPanier: [],
         }
     },
     created() {
@@ -17,15 +17,42 @@ export default {
     },
     methods: {
         getPanier() {
-            // this.quantites = panierServices.getBascket();
             EventBus.$on('basketSize', (quantites) => {
                 this.quantites = quantites;
                 this.initDropdown(panierServices.getPanier())
             });
         },
 
-        initDropdown() {
+        initDropdown(itemPanier) {
+            this.itemPanier = [];
+            let counter = 0;
+            let breakException = {}
+            try {
+                console.log(" ** itemsPanier ** ")
+                for (let key in itemPanier) {
+                    let item = itemPanier[key]
+                    this.itemPanier.push(item);
+                    counter++
+                    if (counter === 3) {
+                        throw breakException;
+                    }
+                }
+            } catch (e) {
+                if (e !== breakException) {
+                    throw e
+                }
+            }
+
 
         },
+        updateQuantity(item) {
+            if(item.quantites == 0 ) {
+                if (confirm("être vous êtes sur devouloir supprimer la confiture ?")) {
+                    panierServices.updatePanier(item);
+                } else {
+                    item.quantites = 1; //todo bug si 2fois
+                }
+            }
+        }
     }
 }

@@ -17,10 +17,6 @@ export default {
                     value: 'prix'
                 },
                 {
-                    text: 'Producteurs',
-                    value: 'producteur'
-                },
-                {
                     text: 'Fruits',
                     value: 'fruits',
                 },
@@ -42,13 +38,13 @@ export default {
     },
     methods: {
         initialize() {
-            apiServices.get('/api/producteur/confiture')
-                .then(({
+            apiServices.get('/api/producteur/confitures')
+                .then((
                         data
-                    }) =>
-                    data.data.forEach(data => {
+                    ) =>
+                    data.data.forEach(data => { //probleme de recuperation des données // normal vue que pas de producteur
                         this.datas.push(data);
-                        return data;
+                        // return data;
                     })
                 )
                 .catch();

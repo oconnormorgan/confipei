@@ -12,9 +12,9 @@ export default {
                     fruits: [],
                     image: '',
                 }
-            }
+            },
         },
-        update: {
+        update: { // bien verifier ou on place ces elements (avant été dans Propos !)
             default: false
         },
     },
@@ -76,13 +76,12 @@ export default {
                     })
                 );
         },
-        editConfiture() {
+        editElement() {
             this.id = this.confiture.id
-            this.intitule = this.confiture.intitule
+            this.nom = this.confiture.nom
             this.prix = this.confiture.prix
             this.producteur = this.confiture.producteur
             this.fruitsListe = this.confiture.fruits
-            this.image = this.confiture.image
             _.merge(this.fruits, this.fruitsListe)
         },
 

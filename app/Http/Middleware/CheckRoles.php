@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\RoleModel;
 use Closure;
+use Illuminate\Support\Facades\Log;
 
 class CheckRoles
 {
@@ -16,15 +17,13 @@ class CheckRoles
      */
     public function handle($request, Closure $next, $roles)
     {
-        // $user = $request->user();
-        // // return response()->json(['error' => $user], 403);
+        $user = $request->user();
+        $role = RoleModel::find($user->id_role);
+        $roles = explode("|", $roles);
+        if (!in_array($role->intitule, $roles)) {
+            return response()->json(['error' => "Unauthorized"], 403);
+        }
 
-        // $role = RoleModel::find($user->id_role);
-        // $roles = explode("|", $roles);
-
-        // if (!in_array($role->intitule, $roles)) {
-        //     return response()->json(['error' => "Unauthorized"], 403);
-        // }
-        // return $next($request);
+        return $next($request);
     }
 }

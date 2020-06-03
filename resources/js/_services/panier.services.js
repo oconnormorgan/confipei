@@ -1,8 +1,10 @@
 import EventBus from '../_helpers/eventBus'; //producteur/consomateur // patern design
 
-export const panierServices = {
+export const panierServices = { // definir dans la class bien toutes les fonction
     ajouter,
-    panierTaille
+    panierTaille,
+    getPanier,
+    updatePanier
 }
 
 function ajouter(quantites, confiture) {
@@ -37,16 +39,31 @@ function getPanier() {
 
 function storePanier(panier) {
     localStorage.setItem("currentBasket", JSON.stringify(panier));
+    EventBus.$emit('updatePanier', panier);
     emitBasketSize(panier);
 }
 
 function emitBasketSize(panier) {
     let taille = _.toPairs(panier).length;
     EventBus.$emit('basketSize', taille);
+
 }
 
 function panierTaille() {
     let panier = getPanier();
     panier = _.toPairsIn(panier).length
     return panier
+}
+
+function updatePanier(confiture) {
+    let panier = getPanier();
+    if ( _.hasIn(panier, buildKey(confiture))) {
+        panier[buildKey(confiture)] = confiture;
+        if (panier[buildKey(confiture)].quantites == 0) {
+            _.unset(panier, buildKey(confiture));
+        }
+    } else {
+        throw 'error'
+    }
+    storePanier(panier);
 }

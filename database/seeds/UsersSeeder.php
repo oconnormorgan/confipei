@@ -39,11 +39,7 @@ class UsersSeeder extends Seeder
             'id_role' => 3,
         ]);
 
-        factory(App\UsersModel::class, 5)
-        ->create()
-        ->each(function($u) {
-            $u->commandes()->saveMany(factory(App\CommandesModel::class, 2)
-                ->make());
-            });
+        factory(App\User::class, 5)
+        ->create();
     }
 }

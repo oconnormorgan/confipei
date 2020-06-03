@@ -30,7 +30,7 @@ class UserResource extends JsonResource
                 'nom' => $this->nom,
                 'email' => $this->email,
                 'token' => $this->token,
-                'id_role'=>$role,
+                'role'=>$role,
             ];
         } else {
             return parent::toArray($request);

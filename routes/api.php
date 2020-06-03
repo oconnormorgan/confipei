@@ -17,16 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware(['auth:api' => 'roles:Admin|Producteur'])->group(function () {
+
+// TODO refaire les middleware //
+Route::middleware(['auth:api', 'roles:Admin|Producteur'])->group(function () {
     Route::post('/create', 'ConfitureController@store');
 });
 
-Route::middleware(['auth:api' => 'roles:Producteur'])->prefix('/producteur')->group(function(){
-    Route::get('/confiture', 'ConfitureController@getOfProducteur');
+Route::middleware(['auth:api', 'roles:Producteur'])->prefix('/producteur')->group(function () {
+    Route::get('/confitures', 'ConfitureController@getOfProducteur');
+    Route::get('/panier', 'ConfitureController@getProducteurPanier');
 });
 
 Route::post('/login', 'AuthController@login');
 Route::get('/logout', 'AuthController@logout');
+
 
 Route::get('/liste', 'ConfitureController@index');
 Route::get('/test, ProducteursController@getConfitures');

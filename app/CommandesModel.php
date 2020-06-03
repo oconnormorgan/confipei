@@ -18,6 +18,6 @@ class CommandesModel extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(UsersModel::class, 'commande_has_confiture', 'id_commande', 'id_user');
+        return $this->belongsToMany(User::class, 'commande_has_confiture', 'id_commande', 'id_user');
     }
 }

@@ -17,6 +17,6 @@ class ProducteursModel extends Model
     }
 
     public function user(){
-        return $this->belongsTo(UsersModel::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

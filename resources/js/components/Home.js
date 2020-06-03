@@ -8,7 +8,7 @@ import {
     Role
 } from "../_helpers/role";
 import axios from "axios";
-import addPanier from './addPanier.vue';
+import addPanier from './dashboard/addPanier.vue';
 
 export default {
     components: {
@@ -48,21 +48,9 @@ export default {
     },
     created() {
         authenticationService.currentUser.subscribe(x => (this.currentUser = x));
-        // this.getUser();
         this.initialize();
     },
     methods: {
-        // getUser() {
-        //     axios.get("/api/user", {
-        //         headers: {
-        //             Authorization: `Bearer ${this.currentUser.token}`
-        //         }
-        //     }).then((data) =>
-        //         console.log(data)
-        //     ).catch((error) =>
-        //         console.log(error)
-        //     );
-        // },
         goBack() {
             window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
         },

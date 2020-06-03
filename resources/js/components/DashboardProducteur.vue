@@ -9,12 +9,12 @@
               <v-toolbar-title>Liste des vos confitures</v-toolbar-title>
               <v-divider class="mx-4" inset vertical></v-divider>
               <v-spacer></v-spacer>
-              <addConfiture @create="confitures.push($event)" />
+              <addConfiture />
             </v-toolbar>
           </template>
           <template v-slot:item.intitule="{ item }">{{ item.intitule }}</template>
           <template v-slot:item.prix="{ item }">{{ item.prix }}</template>
-          <template v-slot:item.producteur="{ item }">{{ item.producteur.nom }}</template>
+          <!-- <template v-slot:item.producteur="{ item }">{{ item.producteur.nom }}</template> -->
           <template v-slot:item.fruits="{ item }">{{ displayFruits(item.fruits) }}</template>
           <template v-slot:item.image="{ item }">
             <v-img v-if="item.image" :src="item.image" aspect-ratio="1.7"></v-img>

@@ -1,13 +1,7 @@
-import {
-    BehaviorSubject
-} from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
-import {
-    requestOptions
-} from "../_helpers/request-options";
-import {
-    handleResponse
-} from "../_helpers/handle-response";
+import { requestOptions } from "../_helpers/request-options";
+import { handleResponse } from "../_helpers/handle-response";
 
 const currentUserSubject = new BehaviorSubject(
     JSON.parse(localStorage.getItem("currentUser"))
@@ -19,7 +13,6 @@ export const authenticationService = {
     logout,
     isAdmin,
     isProducer() {
-        console.log(role())
         return role() === Role.Producteur
     },
     currentUser: currentUserSubject.asObservable(),

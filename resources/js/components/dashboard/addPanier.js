@@ -1,6 +1,4 @@
-import {
-    panierServices
-} from '../_services/panier.services';
+import { panierServices } from '../../_services/panier.services';
 
 export default {
     data() {
@@ -18,6 +16,5 @@ export default {
             panierServices.ajouter(this.quantites, this.confiture);
             this.quantites = 0;
         }
-
     },
 }

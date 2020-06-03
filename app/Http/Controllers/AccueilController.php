@@ -6,7 +6,7 @@ use App\ConfituresModel;
 use App\Http\Resources\ConfituresResource;
 use App\Http\Resources\UserResource;
 use App\RecompensesModel;
-use App\UsersModel;
+use App\User;
 use Illuminate\Http\Request;
 
 class AccueilController extends Controller

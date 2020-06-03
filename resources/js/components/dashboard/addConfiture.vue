@@ -23,6 +23,10 @@
               <v-text-field v-model="confiture.prix" label="Prix"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
+              <!-- TODO a faire  -->
+              <!-- Doit disparaitre qaund Producteur -->
+              <!-- Producteur = producteur.id -->
+
               <v-select
                 :items="producteurs"
                 item-value="id"
