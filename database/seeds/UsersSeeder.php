@@ -32,9 +32,9 @@ class UsersSeeder extends Seeder
             'id_role' => 2,
         ]);
         DB::table('users_table')->insert([
-            'nom' => 'admin',
+            'nom' => '',
             'prenom' => Str::random(10),
-            'email' => 'admin@gmail.com',
+            'email' => '@gmail.com',
             'password' => bcrypt('123456789'),
             'id_role' => 3,
         ]);

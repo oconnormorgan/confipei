@@ -25,7 +25,6 @@ Route::middleware(['auth:api', 'roles:Admin|Producteur'])->group(function () {
 
 Route::middleware(['auth:api', 'roles:Producteur'])->prefix('/producteur')->group(function () {
     Route::get('/confitures', 'ConfitureController@getOfProducteur');
-    Route::get('/panier', 'ConfitureController@getProducteurPanier');
 });
 
 Route::post('/login', 'AuthController@login');

@@ -28,7 +28,6 @@ export default {
             let counter = 0;
             let breakException = {}
             try {
-                console.log(" ** itemsPanier ** ")
                 for (let key in itemPanier) {
                     let item = itemPanier[key]
                     this.itemPanier.push(item);

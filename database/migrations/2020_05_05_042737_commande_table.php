@@ -15,6 +15,7 @@ class CommandeTable extends Migration
     {
         Schema::create('commande_table', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
         });
     }
 

@@ -3,11 +3,11 @@ import VueRouter from 'vue-router';
 
 import Home from './components/Home.vue';
 import DashboardProducteur from './components/DashboardProducteur.vue';
-import Dashboard from './components/Dashboard.vue'
-import Login from './login/Login.vue'
-import Panier from './components/panier/PanierListe'
+import Dashboard from './components/Dashboard.vue';
+import Login from './login/Login.vue';
+import Panier from './components/panier/PanierListe.vue';
 import { Role } from './_helpers/role';
-import { authenticationService } from './_services/authentication.service'
+import { authenticationService } from './_services/authentication.service';
 
 
 Vue.use(VueRouter);

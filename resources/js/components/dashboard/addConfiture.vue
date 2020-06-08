@@ -1,8 +1,8 @@
 <template>
   <v-dialog v-model="show" max-width="500px">
     <template v-slot:activator="{ on }">
-      <v-btn v-if="!update" color="primary" dark class="mb-2" v-on="on">
-        <i class="fas fa-plus-circle fa-2x"></i>
+      <v-btn icon v-if="!update" color="primary" dark class="mb-2" v-on="on">
+        <v-icon class="fas fa-plus-circle fa-2x"></v-icon>
       </v-btn>
       <v-btn icon small v-if="update" v-on="on">
         <v-icon class="mr-2" @click="editConfiture()">mdi-pencil</v-icon>
