@@ -16,6 +16,7 @@ class CommandesResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'id_user' => $this->id_user
         ];
     }
 }

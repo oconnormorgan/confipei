@@ -28,11 +28,6 @@ class ConfitureHasFruit extends Migration
      */
     public function down()
     {
-        Schema::table('confiture_has_fruit', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['id_confiture']);
-            $table->dropIfExists('id_fruit');
-        });
         Schema::dropIfExists('confiture_has_fruit');
     }
 }

@@ -554,6 +554,7 @@ class ComposerStaticInitd40f42f47f07bde8a4054f076fdc5c91
         'App\\FruitsModel' => __DIR__ . '/../..' . '/app/FruitsModel.php',
         'App\\Http\\Controllers\\AccueilController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccueilController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\CommandeController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommandeController.php',
         'App\\Http\\Controllers\\ConfitureController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConfitureController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ProducteursController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProducteursController.php',

@@ -1,7 +1,13 @@
 import {
     panierServices
 } from "../../_services/panier.services";
-import { authenticationService } from "../../_services/authentication.service";
+import {
+    authenticationService
+} from "../../_services/authentication.service";
+import {
+    apiServices
+} from "../../_services/api.services";
+import EventBus from '../../_helpers/eventBus';
 
 export default {
     // recuperer les elements
@@ -9,7 +15,6 @@ export default {
     data() {
         return {
             itemPanier: [],
-            itemToBuy: [],
             fruits: [],
         }
     },
@@ -19,27 +24,18 @@ export default {
     },
     methods: {
         getPanier() {
-            let itemPanier = panierServices.getPanier();
+            this.itemPanier = panierServices.getPanier();
+            let itemPanier = {};
             for (let key in itemPanier) {
                 let item = itemPanier[key];
                 this.itemPanier.push(item);
             }
         },
-        panierGoPaid() { //recupere le services
-            
-            let itemToBuy = panierServices.getPanier();
 
-            for (let key in itemToBuy) {
-                let allItem = itemToBuy[key];
-                this.itemToBuy.push(allItem);
-            }
-
-        }
+        validerPanier() {
+            panierServices.envoyerCommande().then(response => {
+                console.log(response);
+            })
+        },
     }
-
-
-
-
-
-    // aficher les elements
 }

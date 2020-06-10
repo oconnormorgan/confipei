@@ -15,11 +15,11 @@ export const apiServices = {
             headers: headers(),
         })
     },
-    post(url, body, params = {}) {
+    post(url, datas = {}) {
         return axios({
             method: 'post',
             url: url,
-            params: JSON.stringify(body),
+            data: JSON.stringify(datas),
             headers: headers(),
         })
     }

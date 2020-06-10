@@ -29,11 +29,11 @@ class ModifyProducteurTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::table('producteur_table', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
             $table->dropForeign(['id_user']);
             $table->dropIfExists('id_user');
         });
-        Schema::dropIfExists('producteur_table');
     }
 }

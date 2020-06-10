@@ -13,6 +13,7 @@ return array(
     'App\\FruitsModel' => $baseDir . '/app/FruitsModel.php',
     'App\\Http\\Controllers\\AccueilController' => $baseDir . '/app/Http/Controllers/AccueilController.php',
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
+    'App\\Http\\Controllers\\CommandeController' => $baseDir . '/app/Http/Controllers/CommandeController.php',
     'App\\Http\\Controllers\\ConfitureController' => $baseDir . '/app/Http/Controllers/ConfitureController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ProducteursController' => $baseDir . '/app/Http/Controllers/ProducteursController.php',

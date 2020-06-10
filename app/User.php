@@ -40,7 +40,7 @@ class User extends Authenticatable
         return $this->hasMany(ProducteursModel::class, 'id_user');
     }
 
-    function commandes(){
-        return $this->belongsToMany(CommandesModel::class, 'commande_has_confiture', 'id_user', 'id_commande');
+    function commande(){
+        return $this->hasMany(User::class, 'id_user');
     }
 }

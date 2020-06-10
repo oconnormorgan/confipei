@@ -29,11 +29,6 @@ class CommandeHasConfiture extends Migration
      */
     public function down()
     {
-        Schema::table('commande_has_confiture', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['id_commande']);
-            $table->dropIfExists('id_confiture');
-        });
         Schema::dropIfExists('commande_has_confiture');
     }
 }

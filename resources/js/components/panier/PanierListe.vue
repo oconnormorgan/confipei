@@ -13,12 +13,12 @@
         </v-card>
       </v-row>
       <v-container fluid>
-          <v-row>
+        <v-row>
           <v-col cols="9">
             <p>Facture</p>
           </v-col>
           <v-col cols="3">
-              <p>TVA</p>
+            <p>TVA</p>
           </v-col>
         </v-row>
         <v-row>
@@ -26,7 +26,7 @@
             <small>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque eos debitis earum assumenda eius suscipit vel, velit asperiores aspernatur odio autem. Veniam minus soluta facere quo perspiciatis voluptatem maxime rerum?</small>
           </v-col>
           <v-col cols="3">
-            <v-btn width="100%" @click="panierGoPaid">passer à l'achat</v-btn>
+            <v-btn width="100%" @click="validerPanier" to="/panier/confirmation">Valider votre panier</v-btn>
           </v-col>
         </v-row>
       </v-container>

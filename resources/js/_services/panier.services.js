@@ -1,10 +1,14 @@
 import EventBus from '../_helpers/eventBus'; //producteur/consomateur // patern design
+import {
+    apiServices
+} from './api.services';
 
 export const panierServices = { // definir dans la class bien toutes les fonction
     ajouter,
     panierTaille,
     getPanier,
-    updatePanier
+    updatePanier,
+    envoyerCommande,
 }
 
 function ajouter(quantites, confiture) {
@@ -29,6 +33,7 @@ function buildKey(confiture) {
 
 function getPanier() {
     let panier = localStorage.getItem('currentBasket');
+
     if (!panier) {
         panier = {}
     } else {
@@ -57,7 +62,7 @@ function panierTaille() {
 
 function updatePanier(confiture) {
     let panier = getPanier();
-    if ( _.hasIn(panier, buildKey(confiture))) {
+    if (_.hasIn(panier, buildKey(confiture))) {
         panier[buildKey(confiture)] = confiture;
         if (panier[buildKey(confiture)].quantites == 0) {
             _.unset(panier, buildKey(confiture));
@@ -66,4 +71,21 @@ function updatePanier(confiture) {
         throw 'error'
     }
     storePanier(panier);
+}
+
+function envoyerCommande() {
+    let panier = getPanier();
+    let panierListe = [];
+
+        for (let key in panier) {
+            let items = {}
+            items['id'] = panier[key].id
+            items['quantites'] = panier[key].quantites
+
+            panierListe.push(items);
+        }
+
+    return apiServices.post('/api/panier', {
+        panier: panierListe
+    });
 }

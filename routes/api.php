@@ -26,10 +26,14 @@ Route::middleware(['auth:api', 'roles:Admin|Producteur'])->group(function () {
 Route::middleware(['auth:api', 'roles:Producteur'])->prefix('/producteur')->group(function () {
     Route::get('/confitures', 'ConfitureController@getOfProducteur');
 });
+Route::middleware(['auth:api', 'roles:Producteur'])->group(function () {
+    Route::post('/panier', 'CommandeController@commandePanier');
+});
+
+
 
 Route::post('/login', 'AuthController@login');
 Route::get('/logout', 'AuthController@logout');
-
 
 Route::get('/liste', 'ConfitureController@index');
 Route::get('/test, ProducteursController@getConfitures');

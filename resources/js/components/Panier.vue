@@ -12,7 +12,7 @@
           <v-text-field type="number" min="0" v-model="item.quantites" @input="updateQuantity(item)"></v-text-field>
         </v-list-item>
         <v-list-item>
-          <v-btn small width="100%" to="/producteur/panier">Voir votre panier</v-btn>
+          <v-btn small width="100%" to="/panier">Voir votre panier</v-btn>
         </v-list-item>
       </v-card>
     </v-menu>

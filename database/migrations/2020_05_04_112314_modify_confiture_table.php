@@ -30,6 +30,10 @@ class ModifyConfitureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('confiture_table');
+        Schema::table('confiture_table', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
+            $table->dropForeign(['id_producteur']);
+            $table->dropColumn('image');
+        });
     }
 }

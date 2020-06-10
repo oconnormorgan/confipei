@@ -30,6 +30,11 @@ class ModifyUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_table');
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::table('users_table', function (Blueprint $table) {
+            $table->dropForeign(['id_role']);
+            $table->dropColumn('id_role');
+        });
     }
 }
