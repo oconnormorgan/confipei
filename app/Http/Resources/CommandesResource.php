@@ -14,9 +14,13 @@ class CommandesResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user =  new UserResource($this->user);
+
         return [
             'id' => $this->id,
-            'id_user' => $this->id_user
+            'id_user' => $user,
+            'adresse_facturation' => $this->adresseFacturation,
+            'adresse_livraison' => $this->adresseLivraison,
         ];
     }
 }

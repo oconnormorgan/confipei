@@ -1899,72 +1899,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/panier/ConfirmPanier.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/panier/ConfirmPanier.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      e1: 1
-    };
-  },
-  methods: {
-    alertCommande: function alertCommande() {
-      alert("Merci de votre achat !");
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/layout/layout.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/layout/layout.vue?vue&type=script&lang=js& ***!
@@ -2533,6 +2467,86 @@ __webpack_require__.r(__webpack_exports__);
     save: function save() {
       _services_panier_services__WEBPACK_IMPORTED_MODULE_0__["panierServices"].ajouter(this.quantites, this.confiture);
       this.quantites = 0;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./resources/js/components/panier/ConfirmPanier.js?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/js/components/panier/ConfirmPanier.js?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../_services/authentication.service */ "./resources/js/_services/authentication.service.js");
+/* harmony import */ var _services_panier_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../_services/panier.services */ "./resources/js/_services/panier.services.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      e1: 1,
+      itemPanier: [],
+      enabled: true,
+      commande: {
+        panier: {},
+        nom: '',
+        prenom: '',
+        facturation: {
+          numero: '',
+          adresse: '',
+          codePostal: '',
+          ville: '',
+          pays: ''
+        },
+        livraison: {
+          numero: '',
+          addresse: '',
+          codePostal: '',
+          ville: '',
+          pays: ''
+        }
+      }
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    _services_authentication_service__WEBPACK_IMPORTED_MODULE_0__["authenticationService"].currentUser.subscribe(function (x) {
+      return _this.currentUser = x;
+    });
+    this.getPanier();
+  },
+  methods: {
+    alertCommande: function alertCommande() {
+      alert("Merci de votre achat !");
+    },
+    getPanier: function getPanier() {
+      this.itemPanier = _services_panier_services__WEBPACK_IMPORTED_MODULE_1__["panierServices"].getPanier();
+      var itemPanier = {};
+
+      for (var key in itemPanier) {
+        var item = itemPanier[key];
+        this.itemPanier.push(item);
+        console.log(this.itemPanier);
+      }
+    },
+    confirmation: function confirmation() {
+      this.e1 = 2;
+    },
+    saveInfo: function saveInfo() {
+      this.commande.panier = _services_panier_services__WEBPACK_IMPORTED_MODULE_1__["panierServices"].getPanier();
+
+      if (this.enabled) {
+        this.commande.livraison = this.commande.facturation;
+      }
+
+      _services_panier_services__WEBPACK_IMPORTED_MODULE_1__["panierServices"].envoyerCommande(this.commande);
+      this.e1 = 3;
     }
   }
 });
@@ -45956,20 +45970,127 @@ var render = function() {
             "v-stepper-content",
             { attrs: { step: "1" } },
             [
-              _c("v-card", {
-                staticClass: "mb-12",
-                attrs: { color: "grey lighten-1", height: "200px" }
+              _c("v-card-title", [_vm._v("Votre commande :")]),
+              _vm._v(" "),
+              _vm._l(_vm.itemPanier, function(panier, key) {
+                return _c(
+                  "v-card",
+                  {
+                    key: key,
+                    staticClass: "mb-2",
+                    attrs: { color: "grey lighten-1" }
+                  },
+                  [
+                    _c(
+                      "v-row",
+                      { staticClass: "ma-0 pa-0" },
+                      [
+                        _c(
+                          "v-col",
+                          { staticClass: "ma-0 pa-0" },
+                          [
+                            _c("v-card-text", [_vm._v(_vm._s(panier.intitule))])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-col",
+                          { staticClass: "ma-0 pa-0" },
+                          [
+                            _c("v-card-text", [
+                              _vm._v(_vm._s(panier.quantites) + " pots")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-col",
+                          { staticClass: "ma-0 pa-0" },
+                          [
+                            _c("v-card-text", [
+                              _vm._v(_vm._s(panier.prix) + " €")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-col",
+                          { staticClass: "ma-0 pa-0" },
+                          [
+                            _c("v-card-text", [
+                              _vm._v(
+                                _vm._s(panier.prix * panier.quantites) +
+                                  " € / Total"
+                              )
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-col",
+                          { staticClass: "ma-0 pa-0" },
+                          [_c("v-card-text", [_vm._v("action")])],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
               }),
+              _vm._v(" "),
+              _c(
+                "v-card",
+                { staticClass: "mb-2", attrs: { color: "grey lighten-1" } },
+                [
+                  _c(
+                    "v-row",
+                    { staticClass: "ma-0 pa-0 space-around" },
+                    [
+                      _c(
+                        "v-col",
+                        { staticClass: "ma-0 pa-0" },
+                        [_c("v-card-text", [_vm._v(" TOTAL QUANTITES : ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { staticClass: "ma-0 pa-0" },
+                        [_c("v-card-text", [_vm._v("QUANTITES")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { staticClass: "ma-0 pa-0" },
+                        [_c("v-card-text", [_vm._v("TOTAL PRIX : ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { staticClass: "ma-0 pa-0" },
+                        [_c("v-card-text", [_vm._v("PRIX")])],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-btn",
                 {
                   attrs: { color: "primary" },
-                  on: {
-                    click: function($event) {
-                      _vm.e1 = 2
-                    }
-                  }
+                  on: { click: _vm.confirmation }
                 },
                 [_vm._v("Continuer")]
               ),
@@ -45978,28 +46099,653 @@ var render = function() {
                 _vm._v("Annuler")
               ])
             ],
-            1
+            2
           ),
           _vm._v(" "),
           _c(
             "v-stepper-content",
             { attrs: { step: "2" } },
             [
-              _c("v-card", {
-                staticClass: "mb-12",
-                attrs: { color: "grey lighten-1", height: "200px" }
-              }),
+              _c(
+                "v-card",
+                { staticClass: "mb-12", attrs: { color: "grey lighten-1" } },
+                [
+                  _c(
+                    "v-row",
+                    { staticClass: "ma-0 pa-0" },
+                    [
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Nom *" },
+                                model: {
+                                  value: _vm.commande.nom,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.commande, "nom", $$v)
+                                  },
+                                  expression: "commande.nom"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  type: "string",
+                                  label: "Nom de jeune fille"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Prenom *" },
+                                model: {
+                                  value: _vm.commande.prenom,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.commande, "prenom", $$v)
+                                  },
+                                  expression: "commande.prenom"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    { staticClass: "ma-0 pa-0" },
+                    [
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "N° *" },
+                                model: {
+                                  value: _vm.commande.facturation.numero,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.facturation,
+                                      "numero",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.facturation.numero"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Adresse *" },
+                                model: {
+                                  value: _vm.commande.facturation.adresse,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.facturation,
+                                      "adresse",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.facturation.adresse"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  type: "string",
+                                  label: "Code postal *"
+                                },
+                                model: {
+                                  value: _vm.commande.facturation.codePostal,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.facturation,
+                                      "codePostal",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.facturation.codePostal"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    { staticClass: "ma-0 pa-0" },
+                    [
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  type: "string",
+                                  label: "Complement d'adresse"
+                                },
+                                model: {
+                                  value: _vm.commande.facturation.complementAdr,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.facturation,
+                                      "complementAdr",
+                                      $$v
+                                    )
+                                  },
+                                  expression:
+                                    "commande.facturation.complementAdr"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Ville *" },
+                                model: {
+                                  value: _vm.commande.facturation.ville,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.facturation,
+                                      "ville",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.facturation.ville"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Pays *" },
+                                model: {
+                                  value: _vm.commande.facturation.pays,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.facturation,
+                                      "pays",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.facturation.pays"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    { staticClass: "ma-0 pa-0" },
+                    [
+                      _c(
+                        "v-col",
+                        { attrs: { cols: "6" } },
+                        [
+                          _c("v-checkbox", {
+                            attrs: {
+                              type: "checkbox",
+                              label:
+                                "Addresse de facturation = addresse de livraison",
+                              width: "100%",
+                              "hide-details": ""
+                            },
+                            model: {
+                              value: _vm.enabled,
+                              callback: function($$v) {
+                                _vm.enabled = $$v
+                              },
+                              expression: "enabled"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    {
+                      staticClass: "ma-0 pa-0",
+                      attrs: { hidden: _vm.enabled }
+                    },
+                    [
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Nom *" },
+                                model: {
+                                  value: _vm.commande.nom,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.commande, "nom", $$v)
+                                  },
+                                  expression: "commande.nom"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  type: "string",
+                                  label: "Nom de jeune fille"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Prenom *" },
+                                model: {
+                                  value: _vm.commande.prenom,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.commande, "prenom", $$v)
+                                  },
+                                  expression: "commande.prenom"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    {
+                      staticClass: "ma-0 pa-0",
+                      attrs: { hidden: _vm.enabled }
+                    },
+                    [
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "N° *" },
+                                model: {
+                                  value: _vm.commande.livraison.numero,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.livraison,
+                                      "numero",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.livraison.numero"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Adresse *" },
+                                model: {
+                                  value: _vm.commande.livraison.adresse,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.livraison,
+                                      "adresse",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.livraison.adresse"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  type: "string",
+                                  label: "Code postal *"
+                                },
+                                model: {
+                                  value: _vm.commande.livraison.codePostal,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.livraison,
+                                      "codePostal",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.livraison.codePostal"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    {
+                      staticClass: "ma-0 pa-0",
+                      attrs: { hidden: _vm.enabled }
+                    },
+                    [
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  type: "string",
+                                  label: "Complement d'adresse"
+                                },
+                                model: {
+                                  value: _vm.commande.livraison.complementAdr,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.livraison,
+                                      "complementAdr",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.livraison.complementAdr"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Ville *" },
+                                model: {
+                                  value: _vm.commande.livraison.ville,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.livraison,
+                                      "ville",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.livraison.ville"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        {
+                          staticClass: "ma-0 pa-0",
+                          attrs: { cols: "12", sm: "6", md: "4" }
+                        },
+                        [
+                          _c(
+                            "v-card-text",
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "string", label: "Pays *" },
+                                model: {
+                                  value: _vm.commande.livraison.pays,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.commande.livraison,
+                                      "pays",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "commande.livraison.pays"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    {
+                      staticClass: "ma-0 pa-0 justify-center",
+                      attrs: { cols: "12" }
+                    },
+                    [_c("small", [_vm._v(" * obligatoire ")])]
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-btn",
-                {
-                  attrs: { color: "primary" },
-                  on: {
-                    click: function($event) {
-                      _vm.e1 = 3
-                    }
-                  }
-                },
+                { attrs: { color: "primary" }, on: { click: _vm.saveInfo } },
                 [_vm._v("Continuer")]
               ),
               _vm._v(" "),
@@ -46025,7 +46771,7 @@ var render = function() {
             [
               _c("v-card", {
                 staticClass: "mb-12",
-                attrs: { color: "grey lighten-1", height: "200px" }
+                attrs: { color: "grey lighten-1" }
               }),
               _vm._v(" "),
               _c(
@@ -103617,7 +104363,7 @@ function updatePanier(confiture) {
   storePanier(panier);
 }
 
-function envoyerCommande() {
+function envoyerCommande(commande) {
   var panier = getPanier();
   var panierListe = [];
 
@@ -103628,8 +104374,15 @@ function envoyerCommande() {
     panierListe.push(items);
   }
 
+  var comandeFacturation = commande.facturation;
+  var comandeLivraison = commande.livraison;
   return _api_services__WEBPACK_IMPORTED_MODULE_1__["apiServices"].post('/api/panier', {
-    panier: panierListe
+    panier: panierListe,
+    facturation: comandeFacturation,
+    livraison: comandeLivraison
+  }).then(function (_ref) {
+    var data = _ref.data;
+    console.log(data);
   });
 }
 
@@ -104134,19 +104887,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/panier/ConfirmPanier.js?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/panier/ConfirmPanier.js?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_ConfirmPanier_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!./ConfirmPanier.js?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./resources/js/components/panier/ConfirmPanier.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_ConfirmPanier_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/panier/ConfirmPanier.vue":
 /*!**********************************************************!*\
   !*** ./resources/js/components/panier/ConfirmPanier.vue ***!
   \**********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ConfirmPanier_vue_vue_type_template_id_167704ae___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfirmPanier.vue?vue&type=template&id=167704ae& */ "./resources/js/components/panier/ConfirmPanier.vue?vue&type=template&id=167704ae&");
-/* harmony import */ var _ConfirmPanier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfirmPanier.vue?vue&type=script&lang=js& */ "./resources/js/components/panier/ConfirmPanier.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ConfirmPanier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ConfirmPanier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _ConfirmPanier_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfirmPanier.js?vue&type=script&lang=js& */ "./resources/js/components/panier/ConfirmPanier.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -104155,7 +104921,7 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ConfirmPanier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ConfirmPanier_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _ConfirmPanier_vue_vue_type_template_id_167704ae___WEBPACK_IMPORTED_MODULE_0__["render"],
   _ConfirmPanier_vue_vue_type_template_id_167704ae___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -104169,20 +104935,6 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/panier/ConfirmPanier.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/panier/ConfirmPanier.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/panier/ConfirmPanier.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfirmPanier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ConfirmPanier.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/panier/ConfirmPanier.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfirmPanier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -104685,8 +105437,8 @@ var opts = {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/morgan/Bureau/projet/confipei/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/morgan/Bureau/projet/confipei/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/morgan/Bureau/projet/confipei/confipei/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/morgan/Bureau/projet/confipei/confipei/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

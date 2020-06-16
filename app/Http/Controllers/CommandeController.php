@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdressesModel;
 use App\CommandesModel;
 use App\ConfituresModel;
 use App\Http\Resources\CommandesResource;
@@ -9,6 +10,7 @@ use App\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class CommandeController extends Controller
@@ -95,31 +97,24 @@ class CommandeController extends Controller
             $request->all(),
             [
                 'panier' => 'required',
+                'facturation' => 'required',
+                'livraison' => 'required',
             ]
         )->validate();
 
-        //recup User, lier à la commande, verifier les confitures, RollBack si ça n'exsite pas
-
         $user = $request->user();
+
         DB::beginTransaction();
+
         try {
             if ($user) {
                 $creeCommande = new CommandesModel;
-                $logged = User::where('id', '=', $user->id)->first();
-                if (!$logged) {
-                    throw new Exception('Vous n\'êtes pas connecter');
-                }
-                $creeCommande->users()->associate($logged);
+                $user = $this->addUserComande($user, $creeCommande);
+                $this->addAdresseFacturation($data['facturation'], $creeCommande, $user);
+                $this->addAdresseLivraison($data['livraison'], $creeCommande, $user);
                 $creeCommande->save();
-                foreach ($data['panier'] as $_panier) {
-                    $quantite = $_panier['quantites'];
-                    $idConfiture = $_panier['id'];
-                    $confiture = ConfituresModel::find($idConfiture);
-                    if (!$confiture) {
-                        throw new Exception('Confiture incorrects');
-                    }
-                    $creeCommande->confitures()->attach($confiture, ['quantite' => $quantite]);
-                }
+
+                $this->addPanierComande($data['panier'], $creeCommande);
             } else {
                 return "pas de compte utilisateur";
             }
@@ -127,16 +122,57 @@ class CommandeController extends Controller
             DB::rollBack();
             return $e->getMessage();
         }
-        // DB::commit();
+        DB::commit();
 
         return new CommandesResource($creeCommande);
+    }
 
-        //  verifier si User connecter
-        //  si !logged > login
-        //  si non
-        //  nouvelle vue pour valider la commande
-        //    Set 1 verifier la commande
-        //    Set 2 addresse de facturation / addresse de livraison / coché si AF = AL
-        //    Set 2 paiment 
+    public function addUserComande($user, &$commande)
+    {
+        $logged = User::where('id', '=', $user->id)->first();
+        if (!$logged) {
+            throw new Exception('Vous n\'êtes pas connecter');
+        }
+        $commande->user()->associate($logged);
+
+        return $logged;
+    }
+
+    public function addAdresseFacturation($adresse, &$commande, $user)
+    {
+        $adresse = $this->creeAdresse($adresse, $user);
+        $commande->adresseFacturation()->associate($adresse);
+    }
+
+    public function addAdresseLivraison($adresse, &$commande, $user)
+    {
+        $adresse = $this->creeAdresse($adresse, $user);
+        $commande->adresseLivraison()->associate($adresse);
+    }
+
+    public function creeAdresse($_adresse, $user)
+    {
+        $adresse = new AdressesModel();
+        $adresse->numero = $_adresse['numero'];
+        $adresse->adresse = $_adresse['adresse'];
+        $adresse->code_postal = $_adresse['codePostal'];
+        $adresse->ville = $_adresse['ville'];
+        $adresse->pays = $_adresse['pays'];
+        $adresse->user()->associate($user);
+        $adresse->save();
+        return $adresse;
+    }
+
+    public function addPanierComande($panier, &$commande)
+    {
+        foreach ($panier as $_panier) {
+            $quantite = $_panier['quantites'];
+            $idConfiture = $_panier['id'];
+            $confiture = ConfituresModel::find($idConfiture);
+            if (!$confiture) {
+                throw new Exception('Confiture incorrects');
+            }
+            $commande->confitures()->attach($confiture, ['quantite' => $quantite]);
+        }
     }
 }

@@ -73,19 +73,28 @@ function updatePanier(confiture) {
     storePanier(panier);
 }
 
-function envoyerCommande() {
+function envoyerCommande(commande) {
     let panier = getPanier();
     let panierListe = [];
 
-        for (let key in panier) {
-            let items = {}
-            items['id'] = panier[key].id
-            items['quantites'] = panier[key].quantites
+    for (let key in panier) {
+        let items = {}
+        items['id'] = panier[key].id
+        items['quantites'] = panier[key].quantites
 
-            panierListe.push(items);
-        }
+        panierListe.push(items);
+    }
+
+    let comandeFacturation = commande.facturation;
+    let comandeLivraison = commande.livraison;
 
     return apiServices.post('/api/panier', {
-        panier: panierListe
+        panier: panierListe,
+        facturation: comandeFacturation,
+        livraison: comandeLivraison,
+    }).then(({
+        data
+    }) => {
+        console.log(data);
     });
 }

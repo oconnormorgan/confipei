@@ -20,7 +20,6 @@ class ModifyRelationUserComande extends Migration
         Schema::enableForeignKeyConstraints();
 
         Schema::table('commande_table', function (Blueprint $table) {
-            
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users_table');
         });

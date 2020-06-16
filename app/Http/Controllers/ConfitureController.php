@@ -255,17 +255,10 @@ class ConfitureController extends Controller
     }
     public function getOfProducteur(Request $request) {
 
-        Log::debug($request);
-
         $user = $request->user();
-        Log::debug("user dans getOfProducteur");
-        Log::debug($user);
         $confitures = ConfituresModel::with(['fruits'])->whereHas('producteur', function (Builder $query) use ($user) {
             $query->where('id_user', '=', $user->id); // j'ai pas l'ID...
         })->get();
-        
-        Log::debug("confitures dans getOfProducteur");
-        log::debug($confitures);
         return $confitures;
     }
 }

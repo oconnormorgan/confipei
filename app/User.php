@@ -35,6 +35,10 @@ class User extends Authenticatable
     function role(){
         return $this->belongsTo(RoleModel::class, 'id_role');
     }
+
+    function adresse(){
+        return $this->hasMany(User::class, 'id_user');
+    }
     
     function producteur(){
         return $this->hasMany(ProducteursModel::class, 'id_user');
