@@ -13,16 +13,19 @@
       </v-container>
     </v-content>
     <Footer />
+    <Snack />
   </v-app>
 </template>
 
 <script>
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
+import Snack from "../components/snack";
 export default {
   components: {
     Navbar,
-    Footer
+    Footer,
+    Snack
   }
 };
 </script>

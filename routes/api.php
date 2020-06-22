@@ -30,7 +30,7 @@ Route::middleware(['auth:api', 'roles:Client|Producteur'])->group(function () {
     Route::post('/panier', 'CommandeController@commandePanier');
 });
 
-
+Route::post('/paiement', 'CommandeController@paiement');
 
 Route::post('/login', 'AuthController@login');
 Route::get('/logout', 'AuthController@logout');

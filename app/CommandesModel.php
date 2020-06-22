@@ -9,7 +9,7 @@ class CommandesModel extends Model
 {
     protected $table = 'commande_table';
     protected $fillable = [
-        'id', 'id_user', 'id_adresse_facturation', 'id_adresse_livraison'
+        'id', 'id_user', 'id_adresse_facturation', 'id_adresse_livraison',
     ];
     public $timestamps = false;
 

@@ -33,6 +33,7 @@ $factory->define(ConfituresModel::class, function (Faker $faker) {
         'intitule' => $faker->unique()->firstName(),
         'prix' => $faker->numberBetween($min = 3, $max = 12),
         'id_producteur' => $id_producteur,
+        'quantite' => $faker->numberBetween($min = 0, $max = 10),
     ];
 });
 

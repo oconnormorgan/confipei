@@ -24,6 +24,7 @@ class ConfituresResource extends JsonResource
             'recompense' => $this->recompenses,
             'fruits' => $this->fruits,
             'image' => $this->image,
+            'quantite' => $this->quantite
             // 'fruits' => FruitsResource::collection($this->whenLoaded('fruits'))
         ];
     }

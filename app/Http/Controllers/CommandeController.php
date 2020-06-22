@@ -7,6 +7,7 @@ use App\CommandesModel;
 use App\ConfituresModel;
 use App\Http\Resources\CommandesResource;
 use App\User;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -105,13 +106,18 @@ class CommandeController extends Controller
         $user = $request->user();
 
         DB::beginTransaction();
-
+        
         try {
             if ($user) {
+
+                // recuper les confitures
+
                 $creeCommande = new CommandesModel;
+
                 $user = $this->addUserComande($user, $creeCommande);
                 $this->addAdresseFacturation($data['facturation'], $creeCommande, $user);
                 $this->addAdresseLivraison($data['livraison'], $creeCommande, $user);
+                $creeCommande->id_statut = 1;
                 $creeCommande->save();
 
                 $this->addPanierComande($data['panier'], $creeCommande);
@@ -122,6 +128,7 @@ class CommandeController extends Controller
             DB::rollBack();
             return $e->getMessage();
         }
+
         DB::commit();
 
         return new CommandesResource($creeCommande);
@@ -173,6 +180,38 @@ class CommandeController extends Controller
                 throw new Exception('Confiture incorrects');
             }
             $commande->confitures()->attach($confiture, ['quantite' => $quantite]);
+        }
+    }
+
+    public function paiement(Request $request)
+    {
+        $data = Validator::make(
+            $request->all(),
+            [
+                'paiement' => 'required',
+            ]
+        )->validate();
+
+        try {
+            $charge = Stripe::charges()->create([
+                'amount' => 20,
+                'currency' => 'Eur',
+                'source' => $data['paiement']['id'],
+                'description' => 'Description goes here',
+                'receipt_email' => "test@gmail.com",
+                'metadata' => [
+                    'data1' => 'metadata1',
+                    'data2' => 'metadata2',
+                    'data3' => 'metadata3',
+                ],
+            ]);
+
+            // si paiment valider passe id-statut à 2
+            // Sinon id_statut = 3 -> remboursement
+
+            return $charge;
+        } catch (Exception $e) {
+            return $e;
         }
     }
 }

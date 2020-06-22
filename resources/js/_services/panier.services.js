@@ -2,6 +2,7 @@ import EventBus from '../_helpers/eventBus'; //producteur/consomateur // patern 
 import {
     apiServices
 } from './api.services';
+import eventBus from '../_helpers/eventBus';
 
 export const panierServices = { // definir dans la class bien toutes les fonction
     ajouter,
@@ -9,22 +10,34 @@ export const panierServices = { // definir dans la class bien toutes les fonctio
     getPanier,
     updatePanier,
     envoyerCommande,
+    paiement,
 }
 
 function ajouter(quantites, confiture) {
     let panier = getPanier()
 
-    if (!_.hasIn(panier, buildKey(confiture))) {
-        panier[buildKey(confiture)] = {
-            id: confiture.id,
-            intitule: confiture.intitule,
-            prix: confiture.prix,
-            quantites: parseInt(quantites)
-        }
+    if (parseInt(quantites) > parseInt(confiture.quantite)) {
+
+        let stock = "Stock épuisé sur ce produit"
+        eventBus.$emit('snackError', stock)
+
     } else {
-        panier[buildKey(confiture)].quantites += parseInt(quantites)
+        if (!_.hasIn(panier, buildKey(confiture))) {
+            panier[buildKey(confiture)] = {
+                id: confiture.id,
+                intitule: confiture.intitule,
+                prix: confiture.prix,
+                quantites: parseInt(quantites)
+            }
+        } else {
+            panier[buildKey(confiture)].quantites += parseInt(quantites)
+        }
+
+        let stock = "Votre commande à été pris en compte"
+        eventBus.$emit('snackSuccess', stock)
+
+        storePanier(panier);
     }
-    storePanier(panier);
 }
 
 function buildKey(confiture) {
@@ -33,7 +46,6 @@ function buildKey(confiture) {
 
 function getPanier() {
     let panier = localStorage.getItem('currentBasket');
-
     if (!panier) {
         panier = {}
     } else {
@@ -51,7 +63,6 @@ function storePanier(panier) {
 function emitBasketSize(panier) {
     let taille = _.toPairs(panier).length;
     EventBus.$emit('basketSize', taille);
-
 }
 
 function panierTaille() {
@@ -74,6 +85,7 @@ function updatePanier(confiture) {
 }
 
 function envoyerCommande(commande) {
+
     let panier = getPanier();
     let panierListe = [];
 
@@ -89,12 +101,34 @@ function envoyerCommande(commande) {
     let comandeLivraison = commande.livraison;
 
     return apiServices.post('/api/panier', {
+
         panier: panierListe,
         facturation: comandeFacturation,
         livraison: comandeLivraison,
+
+    }).then(({
+        data
+    }) => {
+        console.log(" ** data panier ** ")
+        console.log(data)
+    });
+
+}
+
+function paiement(commande) {
+
+    let commandePaiement = commande.paiement;
+
+    return apiServices.post('/api/paiement', {
+        paiement: commandePaiement,
     }).then(({
         data
     }) => {
         console.log(data);
     });
+
+}
+
+function updateStatutToCommande(item) {
+    console.log(item);
 }
