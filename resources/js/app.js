@@ -9,7 +9,7 @@ require('./bootstrap');
 // 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter
 // and then call `Vue.use(VueRouter)`.
 
-window.Vue = require('vue');
+import Vue  from 'vue';
 import Route from './router.js';
 import layout from './layout/layout';
 import vuetify from './src/plugins/vuetify.js' // path to vuetify export

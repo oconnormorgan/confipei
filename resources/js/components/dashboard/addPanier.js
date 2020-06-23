@@ -24,9 +24,6 @@ export default {
     },
     methods: {
         save() {
-
-            this.confiture.quantite = this.confiture.quantite - this.quantites // todo 
-
             panierServices.ajouter(this.quantites, this.confiture);
             this.quantites = 0;
         },

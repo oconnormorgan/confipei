@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid  class="ma-0 pa-0">
+  <v-container fluid class="ma-0 pa-0">
     <v-row class="ma-0 pa-0">
       <v-col cols="6" class="ma-0 pa-0">
         <v-text-field
@@ -21,7 +21,7 @@
     </v-row>
     <v-row class="ma-0 pa-0">
       <v-col cols="6" class="ma-0 pa-0">
-        <hint>Limité à 10 exemplaire par commande</hint>
+        <small>Limité à 10 exemplaire par commande</small>
       </v-col>
       <v-col cols="6">
         <small v-if="confiture.quantite>10"></small>

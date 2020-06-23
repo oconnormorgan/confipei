@@ -1,8 +1,6 @@
 <template>
   <div class="text-center ma-2">
-    <v-snackbar v-model="sbackBar" :color=color>
-      {{ text }}
-    </v-snackbar>
+    <v-snackbar v-model="snackBar" :color="color" left shaped top>{{ text }}</v-snackbar>
   </div>
 </template>
 
@@ -14,13 +12,14 @@ export default {
     return {
       text: "",
       timeout: 3000,
-      sbackBar: false,
+      snackBar: false,
       color: ""
     };
   },
+
   methods: {
     initSnack(color, text) {
-      this.sbackBar = true;
+      this.snackBar = true;
       this.text = text;
       this.color = color;
     }

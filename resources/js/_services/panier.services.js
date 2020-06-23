@@ -14,30 +14,43 @@ export const panierServices = { // definir dans la class bien toutes les fonctio
 }
 
 function ajouter(quantites, confiture) {
+
     let panier = getPanier()
+    let qt = 0
+    let err = false
 
-    if (parseInt(quantites) > parseInt(confiture.quantite)) {
-
-        let stock = "Stock épuisé sur ce produit"
-        eventBus.$emit('snackError', stock)
+    if (!_.hasIn(panier, buildKey(confiture))) {
+        panier[buildKey(confiture)] = {
+            id: confiture.id,
+            intitule: confiture.intitule,
+            prix: confiture.prix,
+        };
+        qt = parseInt(quantites) // on atribue la valeur de quantite 
 
     } else {
-        if (!_.hasIn(panier, buildKey(confiture))) {
-            panier[buildKey(confiture)] = {
-                id: confiture.id,
-                intitule: confiture.intitule,
-                prix: confiture.prix,
-                quantites: parseInt(quantites)
-            }
-        } else {
-            panier[buildKey(confiture)].quantites += parseInt(quantites)
-        }
-
-        let stock = "Votre commande à été pris en compte"
-        eventBus.$emit('snackSuccess', stock)
-
-        storePanier(panier);
+        qt = panier[buildKey(confiture)].quantites + parseInt(quantites) // on atribue la valeur du panier + de la quantite
     }
+
+    // if si qt > confiture quantite
+    if (qt > 10) {
+        eventBus.$emit('snackError', "les confitures sont limité à 10 exemplaire par commande, 10 confitures " + confiture.intitule + " ont été rajouté dans votre panier")
+        qt = 10 // reatribuer la data
+        err = true
+    }
+
+    if (qt > parseInt(confiture.quantite)) {
+        eventBus.$emit('snackError', "Stock épuisé sur ce produit. Il reste " + confiture.quantite + " confiture de " + confiture.intitule + ". Elles sont dans votre panier.")
+        qt = parseInt(confiture.quantite) // reatribuer la data
+        err = true
+    }
+
+    if (!err) {
+        eventBus.$emit('snackSuccess', "Le produit à bien été rajouté dans votre panier.")
+    }
+
+    panier[buildKey(confiture)].quantites = qt
+
+    storePanier(panier);
 }
 
 function buildKey(confiture) {
