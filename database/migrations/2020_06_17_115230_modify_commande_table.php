@@ -13,10 +13,10 @@ class ModifyCommandeTable extends Migration
      */
     public function up()
     {
-        Schema::table('commande_table', function (Blueprint $table) {
-            $table->bigInteger('id_statut')->unsigned();
-            $table->foreign('id_statut')->references('id')->on('statuts_table');
-        });
+        // Schema::table('commande_table', function (Blueprint $table) {
+        //     $table->bigInteger('id_statut')->unsigned();
+        //     $table->foreign('id_statut')->references('id')->on('statuts_table');
+        // });
     }
 
     /**
@@ -26,9 +26,9 @@ class ModifyCommandeTable extends Migration
      */
     public function down()
     {
-        Schema::table('commande_table', function (Blueprint $table) {
-            $table->dropForeign(['id_statut']);
-            $table->dropColumn('id_statut');
-        });
+        // Schema::table('commande_table', function (Blueprint $table) {
+        //     $table->dropForeign(['id_statut']);
+        //     $table->dropColumn('id_statut');
+        // });
     }
 }

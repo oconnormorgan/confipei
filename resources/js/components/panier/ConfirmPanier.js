@@ -15,7 +15,7 @@ export default {
         return {
             e1: 1,
             itemPanier: [],
-            enabled: true,
+            checkBoxHidden: true,
             panel: [0],
             name: '',
             source: null,
@@ -63,11 +63,10 @@ export default {
             this.e1 = 2
         },
         saveInfo() {
-            if (this.enabled) {
+            if (this.checkBoxHidden) {
                 this.commande.livraison = this.commande.facturation;
             }
             panierServices.envoyerCommande(this.commande).then(response => {
-                console.log(response);
             });
             this.e1 = 3
         },
@@ -75,7 +74,6 @@ export default {
             console.log(" ** submit ** ");
             this.commande.paiement = this.source;
             panierServices.paiement(this.commande).then(response => {
-                console.log(response);
             });
         },
     }

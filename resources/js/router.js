@@ -7,7 +7,7 @@ import Dashboard from './components/Dashboard.vue';
 import Login from './login/Login.vue';
 import Panier from './components/panier/PanierListe.vue';
 import PanierConfirm from './components/panier/ConfirmPanier.vue';
-
+import Producteurs from './components/dashboard/Producteurs.vue';
 
 import { Role } from './_helpers/role';
 import { authenticationService } from './_services/authentication.service';
@@ -46,6 +46,12 @@ const router = new VueRouter({
             path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,
+            meta: { authorize: [Role.Admin] }
+        },
+        {
+            path: '/dashboard/producteurs',
+            name: 'producteurs',
+            component: Producteurs,
             meta: { authorize: [Role.Admin] }
         },
         {

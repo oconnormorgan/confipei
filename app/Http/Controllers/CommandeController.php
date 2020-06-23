@@ -6,12 +6,14 @@ use App\AdressesModel;
 use App\CommandesModel;
 use App\ConfituresModel;
 use App\Http\Resources\CommandesResource;
+use App\Mail\Contact;
 use App\User;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class CommandeController extends Controller
@@ -117,7 +119,7 @@ class CommandeController extends Controller
                 $user = $this->addUserComande($user, $creeCommande);
                 $this->addAdresseFacturation($data['facturation'], $creeCommande, $user);
                 $this->addAdresseLivraison($data['livraison'], $creeCommande, $user);
-                $creeCommande->id_statut = 1;
+                // $creeCommande->id_statut = 1;
                 $creeCommande->save();
 
                 $this->addPanierComande($data['panier'], $creeCommande);
@@ -130,6 +132,14 @@ class CommandeController extends Controller
         }
 
         DB::commit();
+
+        Mail::to($user->email)->send(
+            new Contact([
+            'nom' => $user->nom,
+            'prenom' => $user->prenom,
+            'commande' => $creeCommande
+            ])
+        );
 
         return new CommandesResource($creeCommande);
     }

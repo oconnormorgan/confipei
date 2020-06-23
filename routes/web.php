@@ -13,5 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/test-email', function() {
+    return new App\Mail\Contact([
+        'nom' => "toto",
+        'email' => "toto@totoland.com",
+        'message' => "lorem toto, lorem de toto"
+    ]);
+});
+
 Route::get('/', 'AccueilController@index');
 Route::get('/{any}', 'AccueilController@index')->where('any', '.*');

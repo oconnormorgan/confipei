@@ -38,8 +38,13 @@ $factory->define(ConfituresModel::class, function (Faker $faker) {
 });
 
 $factory->define(ProducteursModel::class, function (Faker $faker) {
+
+    $id_users = User::all();
+    $id_user = $faker->randomElement($id_users)->id;
+
     return [
         'nom' => $faker->firstName(),
+        'id_user' => $id_user
     ];
 });
 

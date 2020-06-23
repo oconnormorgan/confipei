@@ -25,6 +25,13 @@ class UsersSeeder extends Seeder
         ]);
 
         DB::table('users_table')->insert([
+            'nom' => 'admin',
+            'prenom' => Str::random(10),
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => 3,
+        ]);
+        DB::table('users_table')->insert([
             'nom' => 'producteur',
             'prenom' => Str::random(10),
             'email' => 'producteur@gmail.com',
@@ -32,11 +39,11 @@ class UsersSeeder extends Seeder
             'id_role' => 2,
         ]);
         DB::table('users_table')->insert([
-            'nom' => '',
+            'nom' => 'user',
             'prenom' => Str::random(10),
-            'email' => '@gmail.com',
+            'email' => 'user@gmail.com',
             'password' => bcrypt('123456789'),
-            'id_role' => 3,
+            'id_role' => 1,
         ]);
 
         factory(App\User::class, 5)

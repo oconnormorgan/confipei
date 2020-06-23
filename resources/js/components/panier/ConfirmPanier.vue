@@ -122,12 +122,12 @@
                 type="checkbox"
                 label="Addresse de facturation = addresse de livraison"
                 width="100%"
-                v-model="enabled"
+                v-model="checkBoxHidden"
                 hide-details
               ></v-checkbox>
             </v-col>
           </v-row>
-          <v-row class="ma-0 pa-0" :hidden="enabled">
+          <v-row class="ma-0 pa-0" :hidden="checkBoxHidden">
             <v-col cols="12" sm="6" md="4" class="ma-0 pa-0">
               <v-card-text>
                 <v-text-field type="string" v-model="commande.nom" label="Nom *"></v-text-field>
@@ -144,7 +144,7 @@
               </v-card-text>
             </v-col>
           </v-row>
-          <v-row class="ma-0 pa-0" :hidden="enabled">
+          <v-row class="ma-0 pa-0" :hidden="checkBoxHidden">
             <v-col cols="12" sm="6" md="4" class="ma-0 pa-0">
               <v-card-text>
                 <v-text-field type="string" v-model="commande.livraison.numero" label="N° *"></v-text-field>
@@ -165,7 +165,7 @@
               </v-card-text>
             </v-col>
           </v-row>
-          <v-row class="ma-0 pa-0" :hidden="enabled">
+          <v-row class="ma-0 pa-0" :hidden="checkBoxHidden">
             <v-col cols="12" sm="6" md="4" class="ma-0 pa-0">
               <v-card-text>
                 <v-text-field

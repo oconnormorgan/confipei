@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// TODO REFAIRE LES ROUTE ICI DASHBOARD
+Route::middleware((['auth:api', 'roles:Admin']))->prefix('/dashboard')->group(function() {
+    Route::get('/producteurs', 'ProducteursController@index');
+});
 
 // TODO refaire les middleware //
 Route::middleware(['auth:api', 'roles:Admin|Producteur'])->group(function () {

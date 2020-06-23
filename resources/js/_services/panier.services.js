@@ -122,8 +122,6 @@ function envoyerCommande(commande) {
     }).then(({
         data
     }) => {
-        console.log(" ** data panier ** ")
-        console.log(data)
     });
 
 }
